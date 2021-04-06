@@ -5,8 +5,8 @@ using UnityEngine;
 public class Pointer : MonoBehaviour
 {
     [Header("Aim")]
-    public Transform Aim;
-    public Camera PlayerCamera;
+    [SerializeField] private Transform Aim;
+    [SerializeField] private Camera PlayerCamera;
 
 
     void LateUpdate()
@@ -22,7 +22,9 @@ public class Pointer : MonoBehaviour
 
 
         Vector3 toAim = Aim.position - transform.position;
-
+        // -60 -120
         transform.rotation = Quaternion.LookRotation(toAim);
+
+        Debug.DrawRay(transform.position, toAim * 20, Color.cyan);
     }
 }

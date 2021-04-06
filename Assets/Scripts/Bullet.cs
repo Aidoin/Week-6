@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public GameObject Effect;
+    [SerializeField] private GameObject Effect;
 
     private void OnCollisionEnter(Collision collision)
     {

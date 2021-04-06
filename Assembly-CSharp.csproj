@@ -69,11 +69,15 @@
     <Compile Include="Assets\FolderAssets\Hit &amp; Slashes Vol.1\SelfDestruct.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\CameraMoove.cs" />
+    <Compile Include="Assets\Scripts\DealDamageTouch.cs" />
+    <Compile Include="Assets\Scripts\EyeLook.cs" />
     <Compile Include="Assets\Scripts\FixetObjects.cs" />
     <Compile Include="Assets\Scripts\Gun.cs" />
+    <Compile Include="Assets\Scripts\LookAtAim.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Pointer.cs" />
     <Compile Include="Assets\Scripts\SurfaceStability.cs" />
+    <Compile Include="Assets\Scripts\VitalSigns.cs" />
     <None Include="Assets\FolderAssets\CartoonGun\CartoonGun.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

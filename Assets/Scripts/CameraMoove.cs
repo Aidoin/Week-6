@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class CameraMoove : MonoBehaviour
 {
-
-    public Transform Player;
-    public float Distance;
+    [SerializeField] private Transform Player;
+    [SerializeField] private float Distance;
 
     
     void Update()

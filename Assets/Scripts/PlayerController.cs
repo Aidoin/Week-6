@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Transform Body;
+    [SerializeField] private Transform Body;
+    [SerializeField] private Transform Eyes;
+    [SerializeField] private Transform Aim;
 
-    public KeyCode MooveRight_KeyCode;
-    public KeyCode MooveLeft_KeyCode;
-    public KeyCode MooveSquat_KeyCode;
-    public KeyCode MooveJump_KeyCode;
+    [SerializeField] private KeyCode MooveRight_KeyCode;
+    [SerializeField] private KeyCode MooveLeft_KeyCode;
+    [SerializeField] private KeyCode MooveSquat_KeyCode;
+    [SerializeField] private KeyCode MooveJump_KeyCode;
+
+    public float qwe;
 
 
     private Rigidbody rigidbody;
@@ -26,7 +30,7 @@ public class PlayerController : MonoBehaviour
     private float timeJump_float = 0.5f; // Время между прыжками
     private float timerJump_float = 0; // Таймер времени между прыжками
 
-    private float leftScreen_float; // Количество пикселей до центра экрана
+    //private float leftSideScreen_float; // Количество пикселей до центра экрана
 
     private bool isGraundet_bool; // Персонаж на земле?
     private bool jumped_bool = false; // Персонаж прыгнул?
@@ -35,7 +39,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        leftScreen_float = Screen.width / 2;
+        //leftSideScreen_float = Screen.width / 2;
     }
 
 
@@ -81,20 +85,23 @@ public class PlayerController : MonoBehaviour
             MooveHorizontal_float = 0;
 
 
-        if (isGraundet_bool && jumped_bool && timerJump_float > timeJump_float)
+        if (isGraundet_bool)
         {
-            Debug.Log("jump");
-            timerJump_float = 0;
-            jumped_bool = false;
-            rigidbody.AddForce(0, jump_float - rigidbody.velocity.y, 0, ForceMode.VelocityChange);
-        }
-
-
-        if (isGraundet_bool && !jumped_bool)
-        {
-            // Управление на земле
-            rigidbody.AddForce(groundNormal * MooveHorizontal_float * speedMoove_float, ForceMode.VelocityChange); // Движение
-            rigidbody.velocity -= new Vector3(rigidbody.velocity.x * surfaceFriction_float, rigidbody.velocity.y * surfaceFriction_float, 0); // Замедление
+            if (jumped_bool)
+            {
+                if (timerJump_float > timeJump_float)
+                {
+                    Debug.Log("jump");
+                    timerJump_float = 0;
+                    jumped_bool = false;
+                    rigidbody.AddForce(0, jump_float - rigidbody.velocity.y, 0, ForceMode.VelocityChange);
+                }
+            }else
+            {
+                // Управление на земле
+                rigidbody.AddForce(groundNormal * MooveHorizontal_float * speedMoove_float, ForceMode.VelocityChange); // Движение
+                rigidbody.velocity -= new Vector3(rigidbody.velocity.x * surfaceFriction_float, rigidbody.velocity.y * surfaceFriction_float, 0); // Замедление
+            }
         }
         else
         {
@@ -103,19 +110,23 @@ public class PlayerController : MonoBehaviour
             rigidbody.velocity -= new Vector3(rigidbody.velocity.x * airResistance_float, 0.5f, 0); // Замедление
         }
 
+
+        // Вектора поворота
+        Vector3 left = (Vector3.right + Vector3.forward).normalized;
+        Vector3 right = (Vector3.left + Vector3.forward).normalized;
+
         // Проверка направлений поворота
-        Debug.DrawRay(transform.position, (Vector3.right + Vector3.forward).normalized * 20, Color.blue);
-        Debug.DrawRay(transform.position, (Vector3.left + Vector3.forward).normalized * 20, Color.red);
+        Debug.DrawRay(transform.position, left * 20, Color.blue);
+        Debug.DrawRay(transform.position, right * 20, Color.red);
 
-
-        // Поворот персонажа в сторону оружия
-        if (Input.mousePosition.x < leftScreen_float)
+        // Поворот в сторону оружия
+        if (Input.mousePosition.x < Screen.width / 2)
         {
-            transform.LookAt(transform.position + Vector3.MoveTowards(transform.forward, (Vector3.right + Vector3.forward).normalized, 0.2f));
+            transform.LookAt(transform.position + Vector3.MoveTowards(transform.forward, left, 0.2f)); // Поворот тела
         }
         else
         {
-            transform.LookAt(transform.position + Vector3.MoveTowards(transform.forward, (Vector3.left + Vector3.forward).normalized, 0.2f));
+            transform.LookAt(transform.position + Vector3.MoveTowards(transform.forward, right, 0.2f)); // Поворот тела
         }
     }
 

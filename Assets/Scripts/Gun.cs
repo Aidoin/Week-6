@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    public float LiveTime;
-    public float PowerShot;
+    [SerializeField] private float LiveTime;
+    [SerializeField] private float PowerShot;
 
-    public GameObject flash;
-    public Transform spawn;
-    public AudioSource Audio;
+    [SerializeField] private GameObject flash;
+    [SerializeField] private Transform spawn;
+    [SerializeField] private AudioSource Audio;
 
     private GameObject bullet;
 
