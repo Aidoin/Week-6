@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class VitalSigns : MonoBehaviour
 {
+    public int team = 1;
+
     [SerializeField] private float health = 1;
     [SerializeField] private float maxHealth = 5;
     [SerializeField] private float armor = 0;
@@ -40,14 +42,14 @@ public class VitalSigns : MonoBehaviour
 
     /// Методы для взаимодействия
 
-    public void TakeDamage(float value)
+    public bool TakeDamage(float value)
     {
         if (Isinvulnerability)
-            return;
+            return false;
 
         if (value < 0){
             Debug.LogError("Значение урона не может быть меньше нуля");
-            return;
+            return false;
         }
         else
         {
@@ -69,6 +71,7 @@ public class VitalSigns : MonoBehaviour
             Isinvulnerability = true;
             StartCoroutine(Invulnerability());
             OnTakeDamage.Invoke();
+            return true;
         }
     }
 

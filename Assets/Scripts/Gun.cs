@@ -44,6 +44,7 @@ public class Gun : MonoBehaviour
         timeShot = 0;
 
         GameObject newBullet = Instantiate(bullet, spawn.position, spawn.rotation);
+        newBullet.GetComponent<Bullet>().team = 0;
         newBullet.GetComponent<Rigidbody>().velocity = spawn.forward * PowerShot;
         Destroy(newBullet, LiveTime);
 
