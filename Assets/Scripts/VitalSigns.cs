@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class VitalSigns : MonoBehaviour
 {
     public int team = 1;
+    public bool Isinvulnerability { get; private set; } = false;
 
     [SerializeField] private float health = 1;
     [SerializeField] private float maxHealth = 5;
@@ -18,12 +19,16 @@ public class VitalSigns : MonoBehaviour
     [SerializeField] private UnityEvent OnHealthRestore;
     [SerializeField] private UnityEvent OnArmorRestore;
     [SerializeField] private UnityEvent OnArmorEnabled;
+    [SerializeField] private UnityEvent OnIsinvulnerability;
     [SerializeField] private UnityEvent OnDeath;
 
-    public bool Isinvulnerability { get; private set; } = false;
-
+    private Hub hub;
     private bool armorEnabled = true;
 
+    private void Start()
+    {
+        hub = FindObjectOfType<Hub>();
+    }
 
     public void Death()
     {
@@ -35,6 +40,7 @@ public class VitalSigns : MonoBehaviour
     {
         for (float time = 0; time < invulnerabilityTime; time += Time.deltaTime)
         {
+            OnIsinvulnerability.Invoke();
             yield return null;
         }
         Isinvulnerability = false;
@@ -47,8 +53,9 @@ public class VitalSigns : MonoBehaviour
         if (Isinvulnerability)
             return false;
 
-        if (value < 0){
-            Debug.LogError("Значение урона не может быть меньше нуля");
+        if (value < 0)
+        {
+            hub.Console.ShowMassage("Значение урона не может быть меньше нуля");
             return false;
         }
         else
@@ -75,10 +82,19 @@ public class VitalSigns : MonoBehaviour
         }
     }
 
-    public void HealthRestore(float value)
+    public bool HealthRestore(float value)
     {
-        health = Mathf.Clamp(health += value, 0, maxHealth);
-        OnHealthRestore.Invoke();
+        if (value < 0)
+        {
+            hub.Console.ShowMassage("Значение лечения не может быть меньше нуля");
+            return false;
+        }
+        else
+        {
+            health = Mathf.Clamp(health += value, 0, maxHealth);
+            OnHealthRestore.Invoke();
+            return true;
+        }
     }
 
     public void ArmorRestore(float value)

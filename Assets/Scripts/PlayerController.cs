@@ -91,7 +91,6 @@ public class PlayerController : MonoBehaviour
             {
                 if (timerJump_float > timeJump_float)
                 {
-                    Debug.Log("jump");
                     timerJump_float = 0;
                     jumped_bool = false;
                     rigidbody.AddForce(0, jump_float - rigidbody.velocity.y, 0, ForceMode.VelocityChange);

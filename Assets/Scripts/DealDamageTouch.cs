@@ -12,6 +12,14 @@ public class DealDamageTouch : MonoBehaviour
 
     [SerializeField] private UnityEvent OnDestroy;
 
+    private Hub hub;
+
+
+    private void Start()
+    {
+        hub = FindObjectOfType<Hub>();
+    }
+
 
     private void OnCollisionStay(Collision collision)
     {
@@ -23,13 +31,14 @@ public class DealDamageTouch : MonoBehaviour
             {
                 if (other.TakeDamage(damage))
                 {
-                    Debug.Log(collision.transform.name + " take damage '" + damage + "'");
+                    hub.Console.ShowMassage(collision.transform.name + " take damage '" + damage + "'");
                     if (selfDestructWhenDealingDamage)
                         Destroy();
                 }
             }
         }
     }
+
 
     private void Destroy()
     {

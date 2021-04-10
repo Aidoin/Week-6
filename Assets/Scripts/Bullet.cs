@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+
     [HideInInspector] public int team = 1;
     [SerializeField] private GameObject Effect;
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -16,6 +18,7 @@ public class Bullet : MonoBehaviour
         } else
             hit();
     }
+
 
     public void hit()
     {

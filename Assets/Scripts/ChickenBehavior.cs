@@ -4,26 +4,27 @@ using UnityEngine;
 
 public class ChickenBehavior : MonoBehaviour
 {
-    private Rigidbody rigidbody;
-    private Transform playerTransform;
 
     [SerializeField] private float maxSpeed_float = 1;
     [SerializeField] private float timeToMaxSpeed_float = 1;
-    [SerializeField] private float visibilityRange_float = 5; 
+    [SerializeField] private float visibilityRange_float = 5;
 
+    private Hub hub;
+    private Rigidbody rigidbody;
 
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
 
-        if (FindObjectOfType<PlayerController>())
-            playerTransform = FindObjectOfType<PlayerController>().transform;
+        hub = FindObjectOfType<Hub>();
     }
 
-    
+
     void Update()
     {
+        Transform playerTransform = hub.Player.transform;
+
         if (playerTransform)
         {
             Debug.DrawRay(transform.position, (playerTransform.position - transform.position).normalized * visibilityRange_float, Color.blue);
@@ -43,9 +44,10 @@ public class ChickenBehavior : MonoBehaviour
                     rigidbody.AddForce(-rigidbody.velocity.normalized * 5f);
             }
         }
-        else {
+        else
+        {
             if (FindObjectOfType<PlayerController>())
                 playerTransform = FindObjectOfType<PlayerController>().transform;
         }
-    }   
+    }
 }
