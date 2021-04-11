@@ -5,6 +5,7 @@ using UnityEngine;
 public class HealsPack : MonoBehaviour
 {
 
+    [SerializeField] private GameObject effect;
     [SerializeField] private float amountOfTreatment = 1;
 
     private Hub hub;
@@ -24,6 +25,9 @@ public class HealsPack : MonoBehaviour
             {
                 isUsed = true;
                 other.attachedRigidbody.GetComponent<VitalSigns>().HealthRestore(amountOfTreatment);
+
+                Destroy(Instantiate(effect, transform.position, Quaternion.identity), 1);
+
                 Destroy(gameObject);
             }
         }

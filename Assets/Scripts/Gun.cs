@@ -7,22 +7,16 @@ public class Gun : MonoBehaviour
     [SerializeField] private float LiveTime;
     [SerializeField] private float PowerShot;
 
+    [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject flash;
     [SerializeField] private Transform spawn;
     [SerializeField] private AudioSource Audio;
 
-    private GameObject bullet;
 
     private float timerShot = 0.3f;
     private float timeShot;
 
 
-    void Start()
-    {
-        bullet = Resources.Load("Prefabs/Bullet", typeof(GameObject)) as GameObject;
-    }
-
-    
     void Update()
     {
         timeShot += Time.deltaTime;
@@ -44,7 +38,7 @@ public class Gun : MonoBehaviour
         timeShot = 0;
 
         GameObject newBullet = Instantiate(bullet, spawn.position, spawn.rotation);
-        newBullet.GetComponent<Bullet>().team = 0;
+        newBullet.GetComponent<Projectile>().team = 0;
         newBullet.GetComponent<Rigidbody>().velocity = spawn.forward * PowerShot;
         Destroy(newBullet, LiveTime);
 
