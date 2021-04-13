@@ -12,7 +12,7 @@ public class HealsPack : MonoBehaviour
     private bool isUsed = false;
 
 
-    private void Start()
+    private void Awake()
     {
         hub = FindObjectOfType<Hub>();
     }

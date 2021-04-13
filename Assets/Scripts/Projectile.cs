@@ -17,7 +17,8 @@ public class Projectile : MonoBehaviour
         {
             if (collision.transform.GetComponent<VitalSigns>().team == this.team)
                 hit();
-        } else
+        }
+        else
             hit();
     }
 

@@ -17,12 +17,15 @@ public class ConsolMassage : MonoBehaviour
     private float timeLive = 0;
     private float allottedTimeToLive = 5;
 
+    private void Awake()
+    {
+        rectTransfrom = GetComponent<RectTransform>();
+        qwe = GetComponent<VerticalLayoutGroup>();
+    }
 
     private void Start()
     {
         ColorMassage = textMassage.color;
-        rectTransfrom = GetComponent<RectTransform>();
-        qwe = GetComponent<VerticalLayoutGroup>();
     }
 
 

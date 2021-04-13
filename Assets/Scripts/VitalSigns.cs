@@ -32,6 +32,7 @@ public class VitalSigns : MonoBehaviour
 
     public void Death()
     {
+        hub.Console.ShowMassage(name + " убит");
         OnDeath.Invoke();
     }
 
@@ -69,10 +70,12 @@ public class VitalSigns : MonoBehaviour
             }
 
             health -= value;
-            if (health < 0)
+            if (health <= 0)
             {
                 health = 0;
                 Death();
+                Isinvulnerability = true;
+                return true;
             }
 
             Isinvulnerability = true;

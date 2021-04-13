@@ -38,12 +38,15 @@ public class PlayerController : MonoBehaviour
     private bool jumped_bool = false; // Персонаж прыгнул?
 
 
-    void Start()
+    void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
-        //leftSideScreen_float = Screen.width / 2;
     }
 
+    private void Start()
+    {
+        //leftSideScreen_float = Screen.width / 2;
+    }
 
     void Update()
     {

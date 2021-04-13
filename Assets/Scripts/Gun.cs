@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    [SerializeField] private float LiveTime;
-    [SerializeField] private float PowerShot;
 
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject flash;
     [SerializeField] private Transform spawn;
-    [SerializeField] private AudioSource Audio;
+    [SerializeField] private AudioSource audio;
 
+    [SerializeField] private float liveTime;
+    [SerializeField] private float speedBulet;
 
     private float timerShot = 0.3f;
     private float timeShot;
@@ -38,12 +38,15 @@ public class Gun : MonoBehaviour
         timeShot = 0;
 
         GameObject newBullet = Instantiate(bullet, spawn.position, spawn.rotation);
-        newBullet.GetComponent<Projectile>().team = 0;
-        newBullet.GetComponent<Rigidbody>().velocity = spawn.forward * PowerShot;
-        Destroy(newBullet, LiveTime);
 
-        Audio.pitch = Random.Range(0.9f, 1.1f);
-        Audio.Play();
+        newBullet.GetComponent<Projectile>().team = 0;
+        newBullet.GetComponent<DealDamageTouch>().team = 0;
+        newBullet.GetComponent<Rigidbody>().velocity = spawn.forward * speedBulet;
+
+        Destroy(newBullet, liveTime);
+
+        audio.pitch = Random.Range(0.9f, 1.1f);
+        audio.Play();
 
         flash.SetActive(true);
         Invoke("HideFlash", 0.08f);

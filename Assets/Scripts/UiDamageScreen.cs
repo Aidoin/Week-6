@@ -13,7 +13,7 @@ public class UiDamageScreen : MonoBehaviour
     private Image damageImade;
 
 
-    private void Start()
+    private void Awake()
     {
         damageImade = GetComponent<Image>();
     }

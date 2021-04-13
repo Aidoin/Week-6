@@ -13,7 +13,7 @@ public class CameraMoove : MonoBehaviour
     private Hub hub;
 
 
-    private void Start()
+    private void Awake()
     {
         hub = FindObjectOfType<Hub>();
     }

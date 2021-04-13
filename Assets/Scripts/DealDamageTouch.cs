@@ -6,16 +6,16 @@ using UnityEngine.Events;
 public class DealDamageTouch : MonoBehaviour
 {
     public int team = 1;
+    public bool selfDestructWhenDealingDamage = true;
 
     [SerializeField] private float damage = 1;
-    [SerializeField] private bool selfDestructWhenDealingDamage = true;
 
     [SerializeField] private UnityEvent OnDestroy;
 
     private Hub hub;
 
 
-    private void Start()
+    private void Awake()
     {
         hub = FindObjectOfType<Hub>();
     }
