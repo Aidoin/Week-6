@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 1
-  health: 1
+  health: 2
   maxHealth: 5
   armor: 0
   maxArmor: 5
@@ -317,9 +317,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ff3c73a97d06e4e9823f8f50872f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 1
-  damage: 2
-  selfDestructWhenDealingDamage: 0
+  Team: 1
+  Damage: 1
+  SelfDestructWhenDealingDamage: 0
   OnDestroy:
     m_PersistentCalls:
       m_Calls: []
@@ -335,10 +335,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4537fed757eccdc4a835928915c095df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 3018622459674565933}
   stay: {fileID: 3018622459178521773}
   takeDamage: {fileID: 3018622460172583963}
   death: {fileID: 4556995228503011410}
-  animator: {fileID: 3018622459674565933}
   maxSpeed_float: 3
   timeToMaxSpeed_float: 1
   visibilityRange_float: 10
@@ -353,7 +353,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 21.844, y: 3.95, z: 0}
+  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 2

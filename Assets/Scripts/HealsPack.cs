@@ -17,6 +17,7 @@ public class HealsPack : MonoBehaviour
         hub = FindObjectOfType<Hub>();
     }
 
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.attachedRigidbody.gameObject == hub.Player)

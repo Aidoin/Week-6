@@ -69,7 +69,6 @@
     <Compile Include="Assets\FolderAssets\Hit &amp; Slashes Vol.1\SelfDestruct.cs" />
     <Compile Include="Assets\Scripts\Blink.cs" />
     <Compile Include="Assets\Scripts\CameraMoove.cs" />
-    <Compile Include="Assets\Scripts\Carrot.cs" />
     <Compile Include="Assets\Scripts\Chicken.cs" />
     <Compile Include="Assets\Scripts\ConsolMassage.cs" />
     <Compile Include="Assets\Scripts\Console.cs" />
@@ -85,6 +84,7 @@
     <Compile Include="Assets\Scripts\Rabbit.cs" />
     <Compile Include="Assets\Scripts\RabbitSpawnCarrot.cs" />
     <Compile Include="Assets\Scripts\UiDamageScreen.cs" />
+    <Compile Include="Assets\Scripts\UiHP.cs" />
     <Compile Include="Assets\Scripts\Unit.cs" />
     <Compile Include="Assets\Scripts\VitalSigns.cs" />
     <None Include="Assets\FolderAssets\CartoonGun\CartoonGun.shader" />

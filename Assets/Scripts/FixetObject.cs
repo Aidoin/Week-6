@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FixetObject : MonoBehaviour
 {
+
     [SerializeField] private Transform Target;
 
 

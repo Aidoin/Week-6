@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RabbitSpawnCarrot : MonoBehaviour
 {
+
     public int Team = 1;
 
     [SerializeField] private GameObject carrot;
@@ -12,6 +13,7 @@ public class RabbitSpawnCarrot : MonoBehaviour
 
     [SerializeField] private Collider[] colliders;
 
+    [SerializeField] private float damage;
     [SerializeField] private float liveTime;
     [SerializeField] private float speedCarrot;
     [SerializeField] private float rotationSpeed;
@@ -33,8 +35,9 @@ public class RabbitSpawnCarrot : MonoBehaviour
         GameObject newCarrot = Instantiate(carrot, spawn.position, spawn.rotation);
 
         Rigidbody rigidbodyNewCarrot = newCarrot.GetComponent<Rigidbody>();
-
-        newCarrot.GetComponent<DealDamageTouch>().team = Team;
+        DealDamageTouch dealDamageNewCarrot = newCarrot.GetComponent<DealDamageTouch>();
+        dealDamageNewCarrot.Team = Team;
+        dealDamageNewCarrot.Damage = damage;
         rigidbodyNewCarrot.maxAngularVelocity = Mathf.Infinity;
         rigidbodyNewCarrot.velocity = ToPlayer * speedCarrot;
         rigidbodyNewCarrot.AddTorque(Vector3.back * rotationSpeed, ForceMode.VelocityChange);

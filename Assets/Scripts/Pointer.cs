@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Pointer : MonoBehaviour
 {
+
     [Header("Aim")]
     [SerializeField] private Transform Aim;
     [SerializeField] private Camera PlayerCamera;

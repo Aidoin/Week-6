@@ -5,36 +5,39 @@ using UnityEngine.Events;
 
 public class DealDamageTouch : MonoBehaviour
 {
-    public int team = 1;
-    public bool selfDestructWhenDealingDamage = true;
 
-    [SerializeField] private float damage = 1;
+    public float Damage = 1;
+    public int Team = 1;
+    public bool SelfDestructWhenDealingDamage = true;
 
     [SerializeField] private UnityEvent OnDestroy;
-
-    private Hub hub;
-
-
-    private void Awake()
-    {
-        hub = FindObjectOfType<Hub>();
-    }
 
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.transform.GetComponent<VitalSigns>())
-        {
-            VitalSigns other = collision.transform.GetComponent<VitalSigns>();
+        Touch(collision.transform);
+    }
 
-            if (other.team != this.team)
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.attachedRigidbody)
+            Touch(other.attachedRigidbody.transform);
+    }
+
+
+    private void Touch(Transform otherTransform)
+    {
+        if (otherTransform.GetComponent<VitalSigns>())
+        {
+            VitalSigns other = otherTransform.GetComponent<VitalSigns>();
+
+            if (other.team != this.Team)
             {
-                if (other.TakeDamage(damage))
-                {
-                    hub.Console.ShowMassage(collision.transform.name + " take damage '" + damage + "'");
-                    if (selfDestructWhenDealingDamage)
-                        Destroy();
-                }
+                other.TakeDamage(Damage);
+
+                if (SelfDestructWhenDealingDamage)
+                    Destroy();
             }
         }
     }

@@ -8,7 +8,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject flash;
     [SerializeField] private Transform spawn;
-    [SerializeField] private AudioSource audio;
+    [SerializeField] private AudioSource audioShot;
 
     [SerializeField] private float liveTime;
     [SerializeField] private float speedBulet;
@@ -33,6 +33,7 @@ public class Gun : MonoBehaviour
         }
     }
 
+
     private void Shot()
     {
         timeShot = 0;
@@ -40,21 +41,21 @@ public class Gun : MonoBehaviour
         GameObject newBullet = Instantiate(bullet, spawn.position, spawn.rotation);
 
         newBullet.GetComponent<Projectile>().team = 0;
-        newBullet.GetComponent<DealDamageTouch>().team = 0;
+        newBullet.GetComponent<DealDamageTouch>().Team = 0;
         newBullet.GetComponent<Rigidbody>().velocity = spawn.forward * speedBulet;
 
         Destroy(newBullet, liveTime);
 
-        audio.pitch = Random.Range(0.9f, 1.1f);
-        audio.Play();
+        audioShot.pitch = Random.Range(0.9f, 1.1f);
+        audioShot.Play();
 
         flash.SetActive(true);
         Invoke("HideFlash", 0.08f);
     }
 
+
     private void HideFlash()
     {
         flash.SetActive(false);
     }
-
 }

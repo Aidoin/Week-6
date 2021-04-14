@@ -5,8 +5,11 @@ using UnityEngine.Events;
 
 public class VitalSigns : MonoBehaviour
 {
+
     public int team = 1;
     public bool Isinvulnerability { get; private set; } = false;
+
+    [HideInInspector] public float Health => health;
 
     [SerializeField] private float health = 1;
     [SerializeField] private float maxHealth = 5;
@@ -25,10 +28,12 @@ public class VitalSigns : MonoBehaviour
     private Hub hub;
     private bool armorEnabled = true;
 
+
     private void Start()
     {
         hub = FindObjectOfType<Hub>();
     }
+
 
     public void Death()
     {
@@ -46,6 +51,7 @@ public class VitalSigns : MonoBehaviour
         }
         Isinvulnerability = false;
     }
+
 
     /// Методы для взаимодействия
 
@@ -70,6 +76,8 @@ public class VitalSigns : MonoBehaviour
             }
 
             health -= value;
+            hub.Console.ShowMassage(name + " take damage '" + value + "'");
+
             if (health <= 0)
             {
                 health = 0;
@@ -84,6 +92,7 @@ public class VitalSigns : MonoBehaviour
             return true;
         }
     }
+
 
     public bool HealthRestore(float value)
     {
