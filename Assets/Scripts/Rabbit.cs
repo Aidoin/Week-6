@@ -5,9 +5,11 @@ using UnityEngine;
 public class Rabbit : Unit
 {
 
+    [SerializeField] private Collider[] colliders;
+
     [SerializeField] private float visibilityRange_float = 13;
     [SerializeField] private float timeBetweenShots = 3;
-    
+
     private float timeShots = 0;
 
 
@@ -15,7 +17,7 @@ public class Rabbit : Unit
     {
         timeShots += Time.fixedDeltaTime;
 
-        Transform playerTransform = MyHub.Player.transform;
+        Transform playerTransform = hub.Player.transform;
 
         Debug.DrawRay(transform.position, (playerTransform.position - transform.position).normalized * visibilityRange_float, Color.blue);
         if (timeShots >= timeBetweenShots)
@@ -23,8 +25,19 @@ public class Rabbit : Unit
             if (Vector3.Distance(playerTransform.position, transform.position) < visibilityRange_float)
             {
                 timeShots = 0;
-                MyAnimator.SetTrigger("Attack");
+                animator.SetTrigger("Attack");
             }
         }
+    }
+
+
+    public override void Death()
+    {
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            colliders[i].isTrigger = false;
+        }
+
+        base.Death();
     }
 }

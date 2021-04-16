@@ -6,20 +6,21 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
+    
+    [SerializeField] protected Animator animator;
 
-    [HideInInspector] public Animator MyAnimator => animator;
-    [HideInInspector] public Rigidbody MyRigidbody => rigidbody;
-    [HideInInspector] public Hub MyHub => hub;
+    [SerializeField] protected AudioSource audioStay;
+
+    [SerializeField] protected AudioSource audioTakeDamage;
+
+    [SerializeField] protected AudioSource audioDeath;
+
+    protected Rigidbody rigidbody;
+
+    protected Hub hub;
 
 
-    [SerializeField] private Animator animator;
-    [SerializeField] private AudioSource stay;
-    [SerializeField] private AudioSource takeDamage;
-    [SerializeField] private AudioSource death;
-
-    private Rigidbody rigidbody;
-    private Hub hub;
-    private float muteSoundWhenTakingDamage = 1f;
+    protected float muteSoundWhenTakingDamage = 1f;
 
 
     void Awake()
@@ -30,20 +31,20 @@ public class Unit : MonoBehaviour
     }
 
 
-    public void TakeDamage()
+    public virtual void TakeDamage()
     {
-        float volume = stay.volume;
-        stay.volume = 0;
-        takeDamage.Play();
+        float volume = audioStay.volume;
+        audioStay.volume = 0;
+        audioTakeDamage.Play();  
 
-        StartCoroutine(PlaySound(stay, muteSoundWhenTakingDamage, volume));
+        StartCoroutine(PlaySound(audioStay, muteSoundWhenTakingDamage, volume));
     }
 
 
-    public void Death()
+    public virtual void Death()
     {
-        stay.Stop();
-        death.Play();
+        audioStay.Stop();
+        audioDeath.Play();
         rigidbody.useGravity = true;
         rigidbody.isKinematic = false;
         rigidbody.constraints = RigidbodyConstraints.None;
@@ -53,7 +54,7 @@ public class Unit : MonoBehaviour
         Component[] components = gameObject.GetComponents(typeof(Component));
         for (int i = 0; i < components.Length; i++)
         {
-            if (components[i] is SphereCollider || components[i] is Rigidbody || components[i] is Transform)
+            if (components[i] is Collider || components[i] is Rigidbody || components[i] is Transform)
             {
                 // None
             }

@@ -442,9 +442,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6850019012373768061}
-  stay: {fileID: 6850019013161004485}
-  takeDamage: {fileID: 6850019012823619718}
-  death: {fileID: 6850019013613966334}
+  audioStay: {fileID: 6850019013161004485}
+  audioTakeDamage: {fileID: 6850019012823619718}
+  audioDeath: {fileID: 6850019013613966334}
+  colliders:
+  - {fileID: 6850019013233962327}
+  - {fileID: 6850019011814032306}
   visibilityRange_float: 13
   timeBetweenShots: 3
 --- !u!114 &6850019013056785543
@@ -459,8 +462,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ff3c73a97d06e4e9823f8f50872f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Team: 1
   Damage: 1
+  Team: 1
   SelfDestructWhenDealingDamage: 0
   OnDestroy:
     m_PersistentCalls:
@@ -1233,7 +1236,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d8c4b12078bfdbc4f995aa2c40a8d8d8,
         type: 3}
       propertyPath: m_Name
-      value: Rabbit (1)
+      value: Rabbit
       objectReference: {fileID: 0}
     - target: {fileID: 2401899561938876177, guid: d8c4b12078bfdbc4f995aa2c40a8d8d8,
         type: 3}

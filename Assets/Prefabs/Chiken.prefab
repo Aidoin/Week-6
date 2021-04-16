@@ -317,8 +317,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ff3c73a97d06e4e9823f8f50872f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Team: 1
   Damage: 1
+  Team: 1
   SelfDestructWhenDealingDamage: 0
   OnDestroy:
     m_PersistentCalls:
@@ -336,9 +336,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 3018622459674565933}
-  stay: {fileID: 3018622459178521773}
-  takeDamage: {fileID: 3018622460172583963}
-  death: {fileID: 4556995228503011410}
+  audioStay: {fileID: 3018622459178521773}
+  audioTakeDamage: {fileID: 3018622460172583963}
+  audioDeath: {fileID: 4556995228503011410}
   maxSpeed_float: 3
   timeToMaxSpeed_float: 1
   visibilityRange_float: 10
