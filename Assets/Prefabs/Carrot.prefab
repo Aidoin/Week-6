@@ -93,7 +93,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 1
-  effect: {fileID: 1500378020736912, guid: 2547a66872ebe45408ace228820a79e1, type: 3}
+  effectOnDestroyPrefab: {fileID: 1500378020736912, guid: 2547a66872ebe45408ace228820a79e1,
+    type: 3}
+  audioOnDestroy: {fileID: 0}
+  passThroughAllies: 1
 --- !u!114 &1928494741696139735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,9 +109,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ff3c73a97d06e4e9823f8f50872f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 1
-  damage: 1
-  selfDestructWhenDealingDamage: 1
+  Damage: 1
+  Team: 1
+  SelfDestructWhenDealingDamage: 1
   OnDestroy:
     m_PersistentCalls:
       m_Calls:

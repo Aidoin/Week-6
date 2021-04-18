@@ -12,6 +12,7 @@ public class CameraMoove : MonoBehaviour
 
     private Hub hub;
 
+    private bool zoom = true;
 
     private void Awake()
     {
@@ -23,13 +24,18 @@ public class CameraMoove : MonoBehaviour
     {
         Transform playerTransform = hub.Player.transform;
 
-        if (Input.GetKey(zoom_KeyCode))
+        if (Input.GetKeyDown(zoom_KeyCode))
         {
-            transform.position = new Vector3(playerTransform.position.x, playerTransform.position.y, Mathf.MoveTowards(transform.position.z, maxDistance, Time.deltaTime * 20));
+            if (zoom == true)
+                zoom = false;
+            else
+                zoom = true;
         }
-        else
-        {
+
+
+        if (zoom)
             transform.position = new Vector3(playerTransform.position.x, playerTransform.position.y, Mathf.MoveTowards(transform.position.z, minDistance, Time.deltaTime * 40));
-        }
+        else
+            transform.position = new Vector3(playerTransform.position.x, playerTransform.position.y, Mathf.MoveTowards(transform.position.z, maxDistance, Time.deltaTime * 20));
     }
 }

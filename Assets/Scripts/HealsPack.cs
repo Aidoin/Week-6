@@ -27,10 +27,26 @@ public class HealsPack : MonoBehaviour
                 isUsed = true;
                 other.attachedRigidbody.GetComponent<VitalSigns>().HealthRestore(amountOfTreatment);
 
-                Destroy(Instantiate(effect, transform.position, Quaternion.identity), 1);
+                StartCoroutine(OnTake());
+            }
+        }
+    }
 
+
+    private IEnumerator OnTake()
+    {
+        Destroy(Instantiate(effect, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity), 1);
+
+        while (transform.localScale.x > 0.1)
+        {
+            if (transform.localScale.x < 0.3f)
+            {
                 Destroy(gameObject);
             }
+
+            transform.localScale = Vector3.MoveTowards(transform.localScale, Vector3.zero, 0.2f);
+
+            yield return new WaitForFixedUpdate();
         }
     }
 }

@@ -9,18 +9,14 @@ public class Chicken : Unit
 
     [SerializeField] private float maxSpeed_float = 1;
     [SerializeField] private float timeToMaxSpeed_float = 1;
-    [SerializeField] private float visibilityRange_float = 10;
 
-   
-    void FixedUpdate()
+
+    private new void FixedUpdate()
     {
-        Transform playerTransform = hub.Player.transform;
+        base.FixedUpdate();
 
-        Debug.DrawRay(transform.position, (playerTransform.position - transform.position).normalized * visibilityRange_float, Color.blue);
-
-        if (Vector3.Distance(playerTransform.position, transform.position) < visibilityRange_float)
+        if (distanceToPlayer < visibilityRange_float)
         {
-            Vector3 toPlayer = (playerTransform.position - transform.position).normalized;
             Vector3 force = rigidbody.mass * (toPlayer * maxSpeed_float - rigidbody.velocity) / timeToMaxSpeed_float;
 
             rigidbody.AddForce(force);

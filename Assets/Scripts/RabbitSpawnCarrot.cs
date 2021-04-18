@@ -9,7 +9,7 @@ public class RabbitSpawnCarrot : MonoBehaviour
 
     [SerializeField] private GameObject carrot;
     [SerializeField] private Transform spawn;
-    [SerializeField] private AudioSource audio;
+    [SerializeField] private AudioSource shotAudio;
 
     [SerializeField] private Collider[] colliders;
 
@@ -36,20 +36,22 @@ public class RabbitSpawnCarrot : MonoBehaviour
 
         Rigidbody rigidbodyNewCarrot = newCarrot.GetComponent<Rigidbody>();
         DealDamageTouch dealDamageNewCarrot = newCarrot.GetComponent<DealDamageTouch>();
+
         dealDamageNewCarrot.Team = Team;
         dealDamageNewCarrot.Damage = damage;
+
         rigidbodyNewCarrot.maxAngularVelocity = Mathf.Infinity;
         rigidbodyNewCarrot.velocity = ToPlayer * speedCarrot;
         rigidbodyNewCarrot.AddTorque(Vector3.back * rotationSpeed, ForceMode.VelocityChange);
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            Physics.IgnoreCollision(newCarrot.GetComponent<CapsuleCollider>(), colliders[i]);
+            Physics.IgnoreCollision(newCarrot.GetComponent<Collider>(), colliders[i]);
         }
 
         Destroy(newCarrot, liveTime);
 
-        audio.pitch = Random.Range(0.9f, 1.1f);
-        audio.Play();
+        shotAudio.pitch = Random.Range(0.9f, 1.1f);
+        shotAudio.Play();
     }
 }

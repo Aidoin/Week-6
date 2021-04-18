@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
             {
                 // Управление на земле
                 rigidbody.AddForce(groundNormal * MooveHorizontal_float * speedMoove_float, ForceMode.VelocityChange); // Движение
-                rigidbody.velocity -= new Vector3(rigidbody.velocity.x * surfaceFriction_float, rigidbody.velocity.y * surfaceFriction_float, 0); // Замедление
+                rigidbody.velocity -= new Vector3(rigidbody.velocity.x, rigidbody.velocity.y, 0) * surfaceFriction_float; // Замедление
             }
         }
         else

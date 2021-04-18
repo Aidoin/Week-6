@@ -8,14 +8,19 @@ public class Projectile : MonoBehaviour
 {
 
     [HideInInspector] public int team = 1;
-    [SerializeField] private GameObject effect;
+
+    [SerializeField] private GameObject effectOnDestroyPrefab;
+    [SerializeField] private GameObject audioOnDestroy;
+    [SerializeField] private bool passThroughAllies = false;
+
+    private bool destroy = true;
 
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.GetComponent<VitalSigns>())
         {
-            if (collision.transform.GetComponent<VitalSigns>().team == this.team)
+            if (!passThroughAllies && collision.transform.GetComponent<VitalSigns>().team == this.team)
                 hit();
         }
         else
@@ -23,10 +28,37 @@ public class Projectile : MonoBehaviour
     }
 
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.attachedRigidbody)
+        {
+            if (other.attachedRigidbody.GetComponent<VitalSigns>())
+            {
+                if (!passThroughAllies && other.attachedRigidbody.GetComponent<VitalSigns>().team == this.team)
+                    hit();
+            }
+            else
+                hit();
+        }
+    }
+
+
     public void hit()
     {
-        Destroy(Instantiate(effect, transform.position, Quaternion.identity), 1);
+        if (destroy)
+        {
+            if (effectOnDestroyPrefab)
+                Destroy(Instantiate(effectOnDestroyPrefab, transform.position, Quaternion.identity), 2);
 
-        Destroy(gameObject);
+            if (audioOnDestroy)
+            {
+                audioOnDestroy.transform.parent = null;
+                audioOnDestroy.GetComponent<AudioSource>().Play();
+                Destroy(audioOnDestroy, 2);
+            }
+
+            destroy = false;
+            Destroy(gameObject);
+        }
     }
 }

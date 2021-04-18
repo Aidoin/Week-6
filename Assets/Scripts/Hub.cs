@@ -7,3 +7,9 @@ public class Hub : MonoBehaviour
     public GameObject Player;
     public Console Console;
 }
+
+public enum Direction
+{
+    Right,
+    Left
+}
