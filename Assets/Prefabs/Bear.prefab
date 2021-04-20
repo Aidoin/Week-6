@@ -1092,6 +1092,7 @@ GameObject:
   - component: {fileID: 1900340961549153897}
   - component: {fileID: 1900340961549153898}
   - component: {fileID: 1900340961549153899}
+  - component: {fileID: 180914092348547891}
   m_Layer: 0
   m_Name: Bear
   m_TagString: Untagged
@@ -1233,6 +1234,20 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 8
   m_CollisionDetection: 0
+--- !u!114 &180914092348547891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900340961549153903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6e8d71439b429478233febe490ffb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activationDistance: 30
+  switchingOffAtDistance: 1
 --- !u!1 &1900340961966217891
 GameObject:
   m_ObjectHideFlags: 0

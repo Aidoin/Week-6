@@ -62,40 +62,6 @@ public class CameraMoove : MonoBehaviour
 
 
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(target - transform.position), Time.deltaTime * 10);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -130,6 +96,13 @@ public class CameraMoove : MonoBehaviour
 
         //transform.position = Vector3.MoveTowards(transform.position, new Vector3(result.x, result.y, Mathf.MoveTowards(transform.position.z, minDistance, Time.deltaTime * 40)), Time.deltaTime * 10);
         //transform.position = Vector3.MoveTowards(transform.position, new Vector3(result.x, result.y, Mathf.MoveTowards(transform.position.z, maxDistance, Time.deltaTime * 20)), Time.deltaTime * 10);
+
+    }
+
+
+    private void LateUpdate()
+    {
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((target - transform.position).normalized), Time.deltaTime * 10);
 
     }
 }

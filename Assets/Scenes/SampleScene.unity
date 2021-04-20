@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657928, g: 0.49641317, b: 0.5748174, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657928, g: 0.49641317, b: 0.5748175, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3300,6 +3300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heart: {fileID: 1072790395222826069, guid: 2c79af1e0dfa35b4f96a3b6a1d54d648, type: 3}
   heartConteiner: {fileID: 497204165}
+  playerVitalSigns: {fileID: 185273231}
   heartList: []
 --- !u!114 &497204167
 MonoBehaviour:
@@ -8250,6 +8251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1438370182}
   - component: {fileID: 1438370181}
+  - component: {fileID: 1438370183}
   m_Layer: 0
   m_Name: Hub
   m_TagString: Untagged
@@ -8285,6 +8287,20 @@ Transform:
   m_Father: {fileID: 909000734}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1438370183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438370180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 959bdd322a4e64d4abbc0e29ca8309c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SwitchesObjects: []
+  playerTransform: {fileID: 185273227}
 --- !u!1001 &1444714834
 PrefabInstance:
   m_ObjectHideFlags: 0

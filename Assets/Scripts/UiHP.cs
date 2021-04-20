@@ -1,28 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class UiHP : MonoBehaviour
 {
 
     [SerializeField] private GameObject heart;
     [SerializeField] private Transform heartConteiner;
+    [SerializeField] private VitalSigns playerVitalSigns;
 
     public List<GameObject> heartList = new List<GameObject>();
-
-    private Hub hub;
-
-
-    private void Awake()
-    {
-        hub = FindObjectOfType<Hub>();    
-    }
-
+    
 
     private void Start()
     {
-        int numberOfHearts = Convert.ToInt32(Mathf.Floor(hub.Player.GetComponent<VitalSigns>().Health)); ////////////////////
+
+
+
+        int numberOfHearts = Mathf.FloorToInt(playerVitalSigns.Health);
 
         for (int i = 0; i < numberOfHearts; i++)
         {
@@ -35,7 +30,7 @@ public class UiHP : MonoBehaviour
     {
         int difference = 0;
 
-        int numberOfHearts = Convert.ToInt32(Mathf.Floor(hub.Player.GetComponent<VitalSigns>().Health)); /////////////////////
+        int numberOfHearts = Mathf.FloorToInt(playerVitalSigns.Health);
 
         if (heartList.Count < numberOfHearts)
         {

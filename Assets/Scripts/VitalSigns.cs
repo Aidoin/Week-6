@@ -17,13 +17,12 @@ public class VitalSigns : MonoBehaviour
     [SerializeField] private float maxArmor = 5;
     [SerializeField] private float invulnerabilityTime = 2;
 
-    [Header("Events:")]
-    [SerializeField] private UnityEvent OnTakeDamage;
-    [SerializeField] private UnityEvent OnHealthRestore;
-    [SerializeField] private UnityEvent OnArmorRestore;
-    [SerializeField] private UnityEvent OnArmorEnabled;
-    [SerializeField] private UnityEvent OnIsinvulnerability;
-    [SerializeField] private UnityEvent OnDeath;
+    [HideInInspector] public UnityEvent OnTakeDamage;
+    [HideInInspector] public UnityEvent OnHealthRestore;
+    [HideInInspector] public UnityEvent OnArmorRestore;
+    [HideInInspector] public UnityEvent OnArmorEnabled;
+    [HideInInspector] public UnityEvent OnIsinvulnerability;
+    [HideInInspector] public UnityEvent OnDeath;
 
     private Hub hub;
     private bool armorEnabled = true;

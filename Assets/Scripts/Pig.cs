@@ -39,7 +39,7 @@ public class Pig : Unit
 
         if (!isAttacking && distanceToPlayer < visibilityRange_float)
         {
-            targetAttack = hub.Player.transform.position;
+            targetAttack = playerTransform.position;
 
             // Отдаляем таргет чтобы свинка пробегала дальше чем была позиция игрока и находим в какую сторону должна смотреть свинка
             if (targetAttack.x > transform.position.x)
@@ -53,7 +53,7 @@ public class Pig : Unit
                 targetEuler.y = -170;
             }
 
-            toTarget = (hub.Player.transform.position - transform.position).normalized;
+            toTarget = (playerTransform.position - transform.position).normalized;
             StartCoroutine(Attacking());
             isAttacking = true;
         }

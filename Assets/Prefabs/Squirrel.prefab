@@ -1705,6 +1705,7 @@ GameObject:
   - component: {fileID: 6557917643210615427}
   - component: {fileID: 6557917643210615428}
   - component: {fileID: 6557917643210615429}
+  - component: {fileID: 4876192314878464405}
   m_Layer: 0
   m_Name: Squirrel
   m_TagString: Untagged
@@ -1847,6 +1848,20 @@ MonoBehaviour:
   OnDestroy:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4876192314878464405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6557917643210615425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6e8d71439b429478233febe490ffb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activationDistance: 30
+  switchingOffAtDistance: 1
 --- !u!1 &6557917643281626268
 GameObject:
   m_ObjectHideFlags: 0

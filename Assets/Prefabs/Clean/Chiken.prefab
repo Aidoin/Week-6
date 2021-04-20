@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 3018622459431680534}
   - component: {fileID: 3018622459431680528}
   - component: {fileID: 3018622459431680533}
+  - component: {fileID: 7108132081501118390}
   m_Layer: 0
   m_Name: Chiken
   m_TagString: Untagged
@@ -340,6 +341,9 @@ MonoBehaviour:
   audioTakeDamage: {fileID: 3018622460172583963}
   audioDeath: {fileID: 4556995228503011410}
   visibilityRange_float: 10
+  boolturnToPlayerWhenDetected: 0
+  isTrigger: 0
+  colliders: []
   maxSpeed_float: 3
   timeToMaxSpeed_float: 1
 --- !u!153 &3018622459431680533
@@ -437,6 +441,20 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &7108132081501118390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3018622459431680520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6e8d71439b429478233febe490ffb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activationDistance: 30
+  switchingOffAtDistance: 1
 --- !u!1 &3018622460172583960
 GameObject:
   m_ObjectHideFlags: 0

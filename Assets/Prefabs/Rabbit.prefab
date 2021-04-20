@@ -387,6 +387,7 @@ GameObject:
   - component: {fileID: 6850019013056785537}
   - component: {fileID: 6850019013056785543}
   - component: {fileID: 6850019013056785542}
+  - component: {fileID: -6616778886019348181}
   m_Layer: 0
   m_Name: Rabbit
   m_TagString: Untagged
@@ -528,6 +529,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &-6616778886019348181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6850019013056785536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6e8d71439b429478233febe490ffb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activationDistance: 30
+  switchingOffAtDistance: 1
 --- !u!1 &6850019013106834255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,6 +1413,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8c4b12078bfdbc4f995aa2c40a8d8d8, type: 3}
+--- !u!1 &6039694535599080000 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d8c4b12078bfdbc4f995aa2c40a8d8d8,
+    type: 3}
+  m_PrefabInstance: {fileID: 6850019012996071185}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4450509976211841280 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -2102261002929365487, guid: d8c4b12078bfdbc4f995aa2c40a8d8d8,
@@ -1425,12 +1446,6 @@ Transform:
 --- !u!4 &6384589705768343802 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d8c4b12078bfdbc4f995aa2c40a8d8d8,
-    type: 3}
-  m_PrefabInstance: {fileID: 6850019012996071185}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6039694535599080000 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d8c4b12078bfdbc4f995aa2c40a8d8d8,
     type: 3}
   m_PrefabInstance: {fileID: 6850019012996071185}
   m_PrefabAsset: {fileID: 0}

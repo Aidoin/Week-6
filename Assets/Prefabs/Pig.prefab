@@ -1368,6 +1368,7 @@ GameObject:
   - component: {fileID: 4487878581536746803}
   - component: {fileID: 707319106502055598}
   - component: {fileID: 707319106502055599}
+  - component: {fileID: 5365664388867321832}
   m_Layer: 0
   m_Name: Pig
   m_TagString: Untagged
@@ -1427,6 +1428,9 @@ MonoBehaviour:
   audioTakeDamage: {fileID: 7953912849092469591}
   audioDeath: {fileID: 8568849982620232644}
   visibilityRange_float: 15
+  boolturnToPlayerWhenDetected: 0
+  isTrigger: 0
+  colliders: []
   audioBeginningAttack: {fileID: 8300000, guid: 99c3da4167b3b0e4191ddf39366bf4a4,
     type: 3}
   audioContinuingAttack: {fileID: 8300000, guid: 70281a236d5256e4999fa7eeca10e57a,
@@ -1511,6 +1515,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5365664388867321832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6003712653174675485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6e8d71439b429478233febe490ffb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activationDistance: 30
+  switchingOffAtDistance: 1
 --- !u!1 &6151705069121099418
 GameObject:
   m_ObjectHideFlags: 0

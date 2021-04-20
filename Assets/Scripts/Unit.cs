@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(VitalSigns))]
+[RequireComponent(typeof(SwitchingTheObjectState))]
 
 public class Unit : MonoBehaviour
 {
@@ -21,8 +23,9 @@ public class Unit : MonoBehaviour
     [SerializeField] protected Collider[] colliders;
 
     protected Rigidbody rigidbody;
+    protected VitalSigns vitalSigns;
 
-    protected Hub hub;
+    protected Transform playerTransform;
 
     protected Vector3 toPlayer;
     protected Vector3 targetEulerToPlayer;
@@ -37,8 +40,10 @@ public class Unit : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
 
         rigidbody = GetComponent<Rigidbody>();
+        vitalSigns = GetComponent<VitalSigns>();
 
-        hub = FindObjectOfType<Hub>();
+        playerTransform = FindObjectOfType<PlayerController>().transform;
+
         if(isTrigger)
         {
             for (int i = 0; i < colliders.Length; i++)
@@ -47,19 +52,22 @@ public class Unit : MonoBehaviour
                 rigidbody.isKinematic = true;
             }
         }
+
+        vitalSigns.OnTakeDamage.AddListener(TakeDamage);
+        vitalSigns.OnDeath.AddListener(Death);
     }
 
 
     protected void FixedUpdate()
     {
-        toPlayer = (hub.Player.transform.position - transform.position).normalized;
-        distanceToPlayer = Vector3.Distance(transform.position, hub.Player.transform.position);
+        toPlayer = (playerTransform.position - transform.position).normalized;
+        distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
 
         Debug.DrawRay(transform.position, toPlayer * visibilityRange_float, Color.blue);
 
         if(boolturnToPlayerWhenDetected)
         {
-            if (hub.Player.transform.position.x > transform.position.x)
+            if (playerTransform.position.x > transform.position.x)
             {
                 targetEulerToPlayer.y = -10;
             }
@@ -104,6 +112,8 @@ public class Unit : MonoBehaviour
         rigidbody.constraints = RigidbodyConstraints.None;
 
         animator.SetTrigger("Death");
+
+        Destroy(this);
 
         Component[] components = gameObject.GetComponents(typeof(Component));
         for (int i = 0; i < components.Length; i++)
