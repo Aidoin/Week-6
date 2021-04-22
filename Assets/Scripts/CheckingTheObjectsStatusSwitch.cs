@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CheckingTheObjectsStatusSwitch : MonoBehaviour
 {
+
     public List<SwitchingTheObjectState> SwitchesObjects = new List<SwitchingTheObjectState>();
 
     [SerializeField] private Transform playerTransform; 

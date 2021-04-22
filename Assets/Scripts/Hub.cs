@@ -5,6 +5,8 @@ using UnityEngine;
 public class Hub : MonoBehaviour
 {
     public GameObject Player;
+    public PlayerValues PlayerValues;
+
     public Console Console;
 }
 

@@ -18,6 +18,12 @@ public class HealsPack : MonoBehaviour
     }
 
 
+    private void Update()
+    {
+        transform.Rotate(Vector3.up, 50 * Time.deltaTime);
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.attachedRigidbody.gameObject == hub.Player)

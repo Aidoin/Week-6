@@ -23,7 +23,7 @@ public class Pointer : MonoBehaviour
 
 
         Vector3 toAim = Aim.position - transform.position;
-        // -60 -120
+        
         transform.rotation = Quaternion.LookRotation(toAim);
 
         Debug.DrawRay(transform.position, toAim * 20, Color.cyan);

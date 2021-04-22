@@ -22,7 +22,9 @@ public class DealDamageTouch : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (other.attachedRigidbody)
+        {
             Touch(other.attachedRigidbody.transform);
+        }
     }
 
 

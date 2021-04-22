@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class SwitchingTheObjectState : MonoBehaviour
 {
 
+    public bool switchingOffAtDistance = true;
+
     [SerializeField] private float activationDistance = 20;
-    [SerializeField] private bool switchingOffAtDistance = true;
 
     private CheckingTheObjectsStatusSwitch checkingSwitches;
 
@@ -25,13 +28,6 @@ public class SwitchingTheObjectState : MonoBehaviour
     }
 
 
-    private void OnDrawGizmosSelected()
-    {
-        Handles.color = Color.grey;
-        Handles.DrawWireDisc(transform.position, Vector3.forward, activationDistance);
-    }
-
-
     public void CheckingDistance(Vector3 playerPosition)
     {
         if (switchingOffAtDistance)
@@ -41,7 +37,7 @@ public class SwitchingTheObjectState : MonoBehaviour
             if (isActive)
             {
                 if (distance > activationDistance)
-                    Deactivate(); 
+                    Deactivate();
             }
             else
             {
@@ -50,7 +46,7 @@ public class SwitchingTheObjectState : MonoBehaviour
             }
         }
     }
-    
+
 
     public void Activate()
     {
@@ -69,4 +65,12 @@ public class SwitchingTheObjectState : MonoBehaviour
     {
         checkingSwitches.SwitchesObjects.Remove(this);
     }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        Handles.color = Color.grey;
+        Handles.DrawWireDisc(transform.position, Vector3.forward, activationDistance);
+    }
+#endif
 }

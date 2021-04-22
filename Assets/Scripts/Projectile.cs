@@ -34,6 +34,7 @@ public class Projectile : MonoBehaviour
         {
             if (other.attachedRigidbody.GetComponent<VitalSigns>())
             {
+                
                 if (!passThroughAllies && other.attachedRigidbody.GetComponent<VitalSigns>().team == this.team)
                     hit();
             }

@@ -7,7 +7,7 @@ public class VitalSigns : MonoBehaviour
 {
 
     public int team = 1;
-    public bool Isinvulnerability { get; private set; } = false;
+    public bool IsInvulnerability { get; private set; } = false;
 
     [HideInInspector] public float Health => health;
 
@@ -16,6 +16,7 @@ public class VitalSigns : MonoBehaviour
     [SerializeField] private float armor = 0;
     [SerializeField] private float maxArmor = 5;
     [SerializeField] private float invulnerabilityTime = 2;
+    [SerializeField] private bool invulnerabilityWhenTakingDamage = false;
 
     [HideInInspector] public UnityEvent OnTakeDamage;
     [HideInInspector] public UnityEvent OnHealthRestore;
@@ -34,6 +35,13 @@ public class VitalSigns : MonoBehaviour
     }
 
 
+    private void OnEnable()
+    {
+        // Фикс того, что при пропадании моба время до окончания неуязвимости сбивается и он становится неуязвим на всегда
+        IsInvulnerability = false;
+    }
+
+
     public void Death()
     {
         hub.Console.ShowMassage(name + " убит");
@@ -41,14 +49,14 @@ public class VitalSigns : MonoBehaviour
     }
 
 
-    private IEnumerator Invulnerability()
+    private IEnumerator InInvulnerability()
     {
         for (float time = 0; time < invulnerabilityTime; time += Time.deltaTime)
         {
             OnIsinvulnerability.Invoke();
             yield return null;
         }
-        Isinvulnerability = false;
+        IsInvulnerability = false;
     }
 
 
@@ -56,40 +64,42 @@ public class VitalSigns : MonoBehaviour
 
     public bool TakeDamage(float value)
     {
-        if (Isinvulnerability)
+        if (IsInvulnerability)
+        {
+            //hub.Console.ShowMassage(name + " Сейчас неуязвим");
             return false;
+        }
 
         if (value < 0)
         {
             hub.Console.ShowMassage("Значение урона не может быть меньше нуля");
             return false;
         }
-        else
+
+        if (armorEnabled && armor > 0)
         {
-            if (armor > 0 && armorEnabled)
-            {
-                armor -= value / 3;
-                value = value / 2;
-                if (armor < 0)
-                    armor = 0;
-            }
-
-            health -= value;
-            hub.Console.ShowMassage(name + " take damage '" + value + "'");
-
-            if (health <= 0)
-            {
-                health = 0;
-                Death();
-                Isinvulnerability = true;
-                return true;
-            }
-
-            Isinvulnerability = true;
-            StartCoroutine(Invulnerability());
-            OnTakeDamage.Invoke();
-            return true;
+            armor -= value / 3;
+            value = value / 2;
+            if (armor < 0)
+                armor = 0;
         }
+
+        health -= value;
+        hub.Console.ShowMassage(name + " получил '" + value + "'" + " урона");
+
+        if (health <= 0)
+        {
+            health = 0;
+            Death();
+        }
+
+        if (invulnerabilityWhenTakingDamage)
+        {
+            IsInvulnerability = true;
+            StartCoroutine(InInvulnerability());
+        }
+        OnTakeDamage.Invoke();
+        return true;
     }
 
 
@@ -100,19 +110,19 @@ public class VitalSigns : MonoBehaviour
             hub.Console.ShowMassage("Значение лечения не может быть меньше нуля");
             return false;
         }
-        else
-        {
-            health = Mathf.Clamp(health += value, 0, maxHealth);
-            OnHealthRestore.Invoke();
-            return true;
-        }
+
+        health = Mathf.Clamp(health += value, 0, maxHealth);
+        OnHealthRestore.Invoke();
+        return true;
     }
+
 
     public void ArmorRestore(float value)
     {
         armor = Mathf.Clamp(armor += value, 0, maxArmor);
         OnArmorRestore.Invoke();
     }
+
 
     public void ArmorEnabled(bool value)
     {

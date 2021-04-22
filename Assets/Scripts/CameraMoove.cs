@@ -54,10 +54,14 @@ public class CameraMoove : MonoBehaviour
         sum = hub.Player.transform.position + offset;
         sum.z += distance;
 
+        transform.position = Vector3.Lerp(transform.position, sum, Time.deltaTime * 5);
+
+
+
+
         //sum = hub.Player.transform.position + offset;
         //sum = new Vector3(sum.x, sum.y, distance);
 
-        transform.position = Vector3.Lerp(transform.position, sum, Time.deltaTime * 5);
 
 
 
@@ -103,6 +107,5 @@ public class CameraMoove : MonoBehaviour
     private void LateUpdate()
     {
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((target - transform.position).normalized), Time.deltaTime * 10);
-
     }
 }
