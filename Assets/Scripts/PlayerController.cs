@@ -15,8 +15,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private KeyCode MooveSquat_KeyCode;
     [SerializeField] private KeyCode MooveJump_KeyCode;
 
-    public float qwe;
-
 
     private Rigidbody rigidbody;
 
@@ -34,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
     //private float leftSideScreen_float; // Количество пикселей до центра экрана
 
+    public bool IsGraundet => isGraundet_bool;
     private bool isGraundet_bool; // Персонаж на земле?
     private bool jumped_bool = false; // Персонаж прыгнул?
 

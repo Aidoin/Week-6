@@ -67,6 +67,7 @@
     <Compile Include="Assets\FolderAssets\Hit &amp; Slashes Vol.1\Demo Scene\ButtonAnimation.cs" />
     <Compile Include="Assets\FolderAssets\Hit &amp; Slashes Vol.1\Demo Scene\GameManager.cs" />
     <Compile Include="Assets\FolderAssets\Hit &amp; Slashes Vol.1\SelfDestruct.cs" />
+    <Compile Include="Assets\Scripts\Ability.cs" />
     <Compile Include="Assets\Scripts\Blink.cs" />
     <Compile Include="Assets\Scripts\CameraMoove.cs" />
     <Compile Include="Assets\Scripts\CheckingTheObjectsStatusSwitch.cs" />
