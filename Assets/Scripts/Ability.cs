@@ -52,7 +52,7 @@ public class Ability : MonoBehaviour
                 return;
             }
 
-
+            playerRigidbody.velocity = new Vector3(playerRigidbody.velocity.x, 0, playerRigidbody.velocity.y);
             playerRigidbody.AddForce(Vector3.up * 20, ForceMode.VelocityChange);
             timeCooldown = 0;
             AbilityCooldown.Stop();

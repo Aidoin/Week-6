@@ -67,7 +67,7 @@ public class Pig : Unit
     }
 
 
-    private void ChangingTheSound(AudioClip newClip, float soundVolume)
+    private void SetAudioClip(AudioClip newClip, float soundVolume)
     {
         audioStay.Stop();
         audioStay.clip = newClip;
@@ -99,14 +99,14 @@ public class Pig : Unit
         }
 
         // Начало атаки (Анимация агра)
-        ChangingTheSound(audioBeginningAttack, audioStay.volume);
+        SetAudioClip(audioBeginningAttack, audioStay.volume);
         animator.SetTrigger("Attack");
 
         yield return new WaitForSeconds(2f);
 
 
         // Атака 
-        ChangingTheSound(audioContinuingAttack, 1);
+        SetAudioClip(audioContinuingAttack, 1);
 
         // Если игрок за анимацию агра перешёл на другую сторону свинки - направление обновляется
         Side side = FindSide();
@@ -147,7 +147,7 @@ public class Pig : Unit
             yield return new WaitForFixedUpdate();
         }
 
-        ChangingTheSound(clipStay, audioVolumeStayStart);
+        SetAudioClip(clipStay, audioVolumeStayStart);
         animator.SetTrigger("Stop");
 
 

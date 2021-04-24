@@ -102,6 +102,7 @@
     <Compile Include="Assets\Scripts\Guns\Revolver.cs" />
   </ItemGroup>
   <ItemGroup>
+     <None Include="Assets\OnTop.shader" />
      <None Include="Assets\FolderAssets\CartoonGun\CartoonGun.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.4f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

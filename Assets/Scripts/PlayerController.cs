@@ -30,8 +30,6 @@ public class PlayerController : MonoBehaviour
     private float timeJump_float = 0.5f; // Время между прыжками
     private float timerJump_float = 0; // Таймер времени между прыжками
 
-    //private float leftSideScreen_float; // Количество пикселей до центра экрана
-
     public bool IsGraundet => isGraundet_bool;
     private bool isGraundet_bool; // Персонаж на земле?
     private bool jumped_bool = false; // Персонаж прыгнул?
@@ -42,10 +40,6 @@ public class PlayerController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
     }
 
-    private void Start()
-    {
-        //leftSideScreen_float = Screen.width / 2;
-    }
 
     void Update()
     {
