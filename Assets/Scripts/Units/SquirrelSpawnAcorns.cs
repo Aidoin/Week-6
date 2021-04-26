@@ -40,7 +40,7 @@ public class SquirrelSpawnAcorns : MonoBehaviour
             dealDamageNewAcorn.Team = Team;
             dealDamageNewAcorn.Damage = damage;
 
-            rigidbodyNewAcorn.velocity = spawns[i].forward * speedAcorns;
+            rigidbodyNewAcorn.velocity = spawns[i].forward * speedAcorns * Random.Range(0.8f, 1.5f);
             rigidbodyNewAcorn.maxAngularVelocity = Mathf.Infinity;
             rigidbodyNewAcorn.AddTorque(random, ForceMode.VelocityChange);
 

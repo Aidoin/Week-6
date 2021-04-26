@@ -82,6 +82,7 @@
     <Compile Include="Assets\FolderAssets\Hit &amp; Slashes Vol.1\SelfDestruct.cs" />
     <Compile Include="Assets\Scripts\UI\ConsolMassage.cs" />
     <Compile Include="Assets\Scripts\CheckingTheObjectsStatusSwitch.cs" />
+    <Compile Include="Assets\Quirky Series\Farm\_Scripts\Demo.cs" />
     <Compile Include="Assets\Scripts\Guns\Gun.cs" />
     <Compile Include="Assets\Scripts\CameraMoove.cs" />
     <Compile Include="Assets\Scripts\UI\Menu.cs" />
@@ -102,8 +103,10 @@
     <Compile Include="Assets\Scripts\Guns\Revolver.cs" />
   </ItemGroup>
   <ItemGroup>
+     <None Include="Assets\Quirky Series\Farm\_Shader\SoftSurface.shader" />
      <None Include="Assets\OnTop.shader" />
      <None Include="Assets\FolderAssets\CartoonGun\CartoonGun.shader" />
+     <None Include="Assets\Quirky Series\Farm\_Shader\ToonRamp.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.4f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

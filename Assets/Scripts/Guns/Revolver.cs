@@ -8,7 +8,5 @@ public class Revolver : Gun
     private new void Awake()
     {
         base.Awake();
-
-        numberOfBullets = Mathf.Infinity;
     }
 }

@@ -7,7 +7,7 @@ public class VitalSigns : MonoBehaviour
 {
 
     public int team = 1;
-    public bool IsInvulnerability { get; private set; } = false;
+    public bool IsInvulnerability = false;
 
     [HideInInspector] public float Health => health;
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Trigger01 : MonoBehaviour
 {
+
     [SerializeField] private AudioSource aud;
     [SerializeField] private AudioClip aud2;
     [SerializeField] private AudioClip aud3;

@@ -61,10 +61,12 @@ public class SwitchingTheObjectState : MonoBehaviour
         isActive = false;
     }
 
+
     private void OnDestroy()
     {
         checkingSwitches.SwitchesObjects.Remove(this);
     }
+
 
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()

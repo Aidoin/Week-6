@@ -20,6 +20,7 @@ public class CameraMoove : MonoBehaviour
     private float distance;
     private bool zoom = true;
 
+
     private void Awake()
     {
         hub = FindObjectOfType<Hub>();
@@ -41,12 +42,12 @@ public class CameraMoove : MonoBehaviour
             if (zoom == true)
             {
                 zoom = false;
-                distance = minDistance;
+                distance = maxDistance;
             }
             else
             {
                 zoom = true;
-                distance = maxDistance;
+                distance = minDistance;
             }
         }
         

@@ -13,7 +13,7 @@ public class SetPositionInEditor : MonoBehaviour
         if (setNullOfZ)
             transform.position = new Vector3(transform.position.x, transform.position.y, 0);
 
-        Object.transform.parent = null;
+        Object.transform.parent = transform.parent;
         Destroy(gameObject);
     }
 }

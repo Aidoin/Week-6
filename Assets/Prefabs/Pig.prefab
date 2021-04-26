@@ -1458,7 +1458,7 @@ MonoBehaviour:
   audioTakeDamage: {fileID: 7953912849092469591}
   audioDeath: {fileID: 8568849982620232644}
   visibilityRange_float: 15
-  boolturnToPlayerWhenDetected: 0
+  boolTurnToPlayerWhenDetected: 0
   isTrigger: 0
   colliders: []
   audioBeginningAttack: {fileID: 8300000, guid: 99c3da4167b3b0e4191ddf39366bf4a4,
@@ -1768,7 +1768,7 @@ GameObject:
   - component: {fileID: 6114693829221122655}
   - component: {fileID: 6003712651843835171}
   m_Layer: 0
-  m_Name: Pig
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
