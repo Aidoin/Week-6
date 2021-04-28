@@ -49,6 +49,8 @@ public class Pig : Unit
 
     private new void FixedUpdate()
     {
+        if (alive == false) return;
+
         base.FixedUpdate();
 
         if (!isAttacking && distanceToPlayer < visibilityRange_float)
