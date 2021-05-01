@@ -27,9 +27,9 @@ public class Gun : MonoBehaviour
 
     protected AMMO uiPanelAMMO;
 
-    private float timeShot;
-    private bool isReloading = false;
-    private bool isPulledTrigger = false; // Нажат курок
+    protected float timeShot;
+    protected bool isReloading = false;
+    protected bool isPulledTrigger = false; // Нажат курок
 
 
     protected void Awake()
@@ -83,7 +83,6 @@ public class Gun : MonoBehaviour
             return;
         }
 
-
         // Выстрел
         timeShot = 0;
 
@@ -105,6 +104,11 @@ public class Gun : MonoBehaviour
 
         flash.SetActive(true);
         Invoke("HideFlash", 0.08f);
+
+        if (chargedInTheMagazine == 0)
+        {
+            Reloading();
+        }
     }
 
 

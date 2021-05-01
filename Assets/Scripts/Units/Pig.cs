@@ -12,6 +12,8 @@ public enum Side
 public class Pig : Unit
 {
 
+    [SerializeField] private GameObject EffectSmoge;
+
     [SerializeField] private AudioClip audioBeginningAttack;
     [SerializeField] private AudioClip audioContinuingAttack;
 
@@ -49,7 +51,8 @@ public class Pig : Unit
 
     private new void FixedUpdate()
     {
-        if (alive == false) return;
+        if (alive == false) 
+            return;
 
         base.FixedUpdate();
 
@@ -131,6 +134,8 @@ public class Pig : Unit
         }
 
         // Свинка бежит к игроку пока не выровняется с ним по координате X
+        EffectSmoge.SetActive(true);
+
         while (Mathf.Abs(transform.position.x - playerTransform.position.x) > 3)
         {
             Vector3 force = rigidbody.mass * (new Vector3(toTarget.x, 0, 0) * maxSpeed_float - rigidbody.velocity) / timeToMaxSpeed_float;
@@ -151,7 +156,7 @@ public class Pig : Unit
 
         SetAudioClip(clipStay, audioVolumeStayStart);
         animator.SetTrigger("Stop");
-
+        EffectSmoge.SetActive(false);
 
         yield return new WaitForSeconds(timeBetweenAttacks);
         isAttacking = false;

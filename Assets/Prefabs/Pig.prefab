@@ -299,7 +299,8 @@ AudioSource:
   m_GameObject: {fileID: 1242770955709074068}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5976654071074783080, guid: 7c5bedda44fbf304eb454ea01230bffd,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 101ab952ad645244c892288575f20142, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.764
@@ -896,7 +897,8 @@ AudioSource:
   m_GameObject: {fileID: 3673042132122964269}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5976654071074783080, guid: 7c5bedda44fbf304eb454ea01230bffd,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: e48faedb58db20446af7268c18497b2a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1423,6 +1425,7 @@ Transform:
   - {fileID: 1429884131323589635}
   - {fileID: 6396833836346712956}
   - {fileID: 8799809868930288253}
+  - {fileID: 4253282285137421669}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1463,6 +1466,7 @@ MonoBehaviour:
   boolTurnToPlayerWhenDetected: 0
   isTrigger: 0
   colliders: []
+  EffectSmoge: {fileID: 8720273153433131272}
   audioBeginningAttack: {fileID: 8300000, guid: 99c3da4167b3b0e4191ddf39366bf4a4,
     type: 3}
   audioContinuingAttack: {fileID: 8300000, guid: 70281a236d5256e4999fa7eeca10e57a,
@@ -1857,7 +1861,8 @@ AudioSource:
   m_GameObject: {fileID: 6960986984768117276}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5976654071074783080, guid: 7c5bedda44fbf304eb454ea01230bffd,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: be9b3290cb7bfbb4492522ee988478fc, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.748
@@ -2124,6 +2129,92 @@ Transform:
   m_Father: {fileID: 6114693829221122655}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2454072910572577469
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6003712653174675484}
+    m_Modifications:
+    - target: {fileID: 1803744406927673304, guid: f7ba62696b4aa6c4082eb92bcd448b57,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803744406927673304, guid: f7ba62696b4aa6c4082eb92bcd448b57,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803744406927673304, guid: f7ba62696b4aa6c4082eb92bcd448b57,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803744406927673304, guid: f7ba62696b4aa6c4082eb92bcd448b57,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803744406927673304, guid: f7ba62696b4aa6c4082eb92bcd448b57,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803744406927673304, guid: f7ba62696b4aa6c4082eb92bcd448b57,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803744406927673304, guid: f7ba62696b4aa6c4082eb92bcd448b57,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803744406927673304, guid: f7ba62696b4aa6c4082eb92bcd448b57,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803744406927673304, guid: f7ba62696b4aa6c4082eb92bcd448b57,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803744406927673304, guid: f7ba62696b4aa6c4082eb92bcd448b57,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803744406927673304, guid: f7ba62696b4aa6c4082eb92bcd448b57,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6560122278033996725, guid: f7ba62696b4aa6c4082eb92bcd448b57,
+        type: 3}
+      propertyPath: m_Name
+      value: EffectSmoge
+      objectReference: {fileID: 0}
+    - target: {fileID: 6560122278033996725, guid: f7ba62696b4aa6c4082eb92bcd448b57,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f7ba62696b4aa6c4082eb92bcd448b57, type: 3}
+--- !u!1 &8720273153433131272 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6560122278033996725, guid: f7ba62696b4aa6c4082eb92bcd448b57,
+    type: 3}
+  m_PrefabInstance: {fileID: 2454072910572577469}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4253282285137421669 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1803744406927673304, guid: f7ba62696b4aa6c4082eb92bcd448b57,
+    type: 3}
+  m_PrefabInstance: {fileID: 2454072910572577469}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3980375764174099538
 PrefabInstance:
   m_ObjectHideFlags: 0

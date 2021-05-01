@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -11,7 +13,7 @@ public class Menu : MonoBehaviour
 
     [SerializeField] private GameObject gameInterface;
     [SerializeField] private GameObject menu;
-    [SerializeField] private AudioSource backgroundMusic;
+    [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private Toggle toggleBackgroundMusic;
     [SerializeField] private Slider sliderVolumeMusic;
 
@@ -26,7 +28,9 @@ public class Menu : MonoBehaviour
 
         // Устанавливаем значение в меню
         menu.SetActive(true);
-        sliderVolumeMusic.value = backgroundMusic.volume;
+        float volume;
+        audioMixer.GetFloat("Master", out volume);
+        sliderVolumeMusic.value = volume;
         menu.SetActive(false);
     }
 
@@ -65,17 +69,44 @@ public class Menu : MonoBehaviour
     }
 
 
-    public void SetVolumeMusic()
+    public void SetVolumeMusicBacground(float volume)
     {
-        backgroundMusic.volume = sliderVolumeMusic.value;
+
+        audioMixer.SetFloat("Master", volume);
+        sliderVolumeMusic.value = volume;
+    }
+
+
+    public void UpdateVolumeMusicBacground()
+    {
+        //if (sliderVolumeMusic.value == -20)
+        //{
+        //    audioMixer.SetFloat("Master", -80);
+        //}
+        //else
+        //{
+        if(sliderVolumeMusic.value > -15)
+        {
+            audioMixer.SetFloat("Master", sliderVolumeMusic.value * 40);
+        }
+        else
+            audioMixer.SetFloat("Master", sliderVolumeMusic.value * 20);
+        //}
     }
 
 
     public void SwitchOnOffBackgroundMusic()
     {
         if (toggleBackgroundMusic.isOn)
-            backgroundMusic.Play();
+            audioMixer.SetFloat("Background", 0);
         else
-            backgroundMusic.Stop();
+            audioMixer.SetFloat("Background", -80);
+    }
+
+
+    public void ReloadLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
     }
 }

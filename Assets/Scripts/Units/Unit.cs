@@ -34,10 +34,13 @@ public class Unit : MonoBehaviour
     protected Vector3 targetEulerToPlayer;
 
     protected float distanceToPlayer;
-    protected float muteSoundWhenTakingDamage = 1f;
+    protected float turnLeftAngle = -10;
+    protected float turnRightAngle = -170;
+
+    protected float muteSoundWhenTakingDamage = 0.5f;
+    protected bool IsPlayAudioTakeDamage = false;
 
     protected bool alive = true;
-    //protected bool IsPlayAudioTakeDamage = false;
 
 
     protected void Awake()
@@ -73,14 +76,14 @@ public class Unit : MonoBehaviour
         Debug.DrawRay(transform.position, toPlayer * visibilityRange_float, Color.blue);
         
         if(boolTurnToPlayerWhenDetected)
-        { Debug.Log("ertgwer");
+        {
             if (playerTransform.position.x > transform.position.x)
             {
-                targetEulerToPlayer.y = -10;
+                targetEulerToPlayer.y = turnLeftAngle;
             }
             else
             {
-                targetEulerToPlayer.y = -170;
+                targetEulerToPlayer.y = turnRightAngle;
             }
             StartCoroutine(TurnToPlayer());
         }
@@ -89,9 +92,13 @@ public class Unit : MonoBehaviour
 
     public virtual void TakeDamage()
     {
+        if (IsPlayAudioTakeDamage)
+            return; 
+
         float volume = audioStay.volume;
         audioStay.volume = 0;
-        audioTakeDamage.Play();  
+        audioTakeDamage.Play();
+
 
         StartCoroutine(PlaySound(audioStay, muteSoundWhenTakingDamage, volume));
     }
@@ -99,7 +106,9 @@ public class Unit : MonoBehaviour
 
     public virtual void Death()
     {
-           alive = false;
+        alive = false;
+        StopAllCoroutines();
+
         vitalSigns.IsInvulnerability = true;
 
         if (isTrigger)
@@ -172,17 +181,22 @@ public class Unit : MonoBehaviour
 
     private IEnumerator PlaySound(AudioSource audio, float timeDistance, float volumeAudio)
     {
+        IsPlayAudioTakeDamage = true;
+
         for (float pastTense = 0; pastTense < timeDistance; pastTense += Time.deltaTime)
         {
             yield return null;
         }
         audio.volume = volumeAudio;
+
+        IsPlayAudioTakeDamage = false;
     }
 
 
     private IEnumerator Destroy(float time)
     {
         yield return new WaitForSeconds(time);
+
         effectDestroy.SetActive(true);
         effectDestroy.transform.parent = transform.parent;
         Destroy(gameObject);

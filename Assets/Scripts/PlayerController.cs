@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(VitalSigns))]
 [RequireComponent(typeof(Rigidbody))]
 
 public class PlayerController : MonoBehaviour
@@ -15,8 +16,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private KeyCode MooveSquat_KeyCode;
     [SerializeField] private KeyCode MooveJump_KeyCode;
 
+    [SerializeField] private AudioSource AudioDeath;
+
 
     private Rigidbody rigidbody;
+    private VitalSigns vitalSigns;
 
     private Vector3 groundNormal; // Вектор движения персонажа относительно его положения
 
@@ -38,6 +42,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        vitalSigns = GetComponent<VitalSigns>();
     }
 
 
