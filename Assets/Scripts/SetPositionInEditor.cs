@@ -8,6 +8,7 @@ public class SetPositionInEditor : MonoBehaviour
     [SerializeField] private GameObject Object;
     [SerializeField] private bool setNullOfZ = false;
 
+
     private void Awake()
     {
         if (setNullOfZ)

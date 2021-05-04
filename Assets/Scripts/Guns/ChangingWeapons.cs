@@ -15,20 +15,12 @@ public struct GunsEquipment
 public class ChangingWeapons : MonoBehaviour
 {
 
-    //public KeyCode PreviousWeapon;
-    //public KeyCode NextWeapon;
-    
-    [Header("Кнопки оружия")]
-    public KeyCode Revolver;
-    public KeyCode Rifle;
-    public KeyCode SawedShotgun;
-    public KeyCode SniperRifle;
-    public KeyCode Submachine;
-
     public List<GunsEquipment> Weapons = new List<GunsEquipment>();
 
-    public int CurrentWeapons => currentWeapons;
-    private int currentWeapons = 0;
+    [SerializeField] private KeyBinding keyBinding;
+
+    public int CurrentWeapons => currentWeaponsIndex;
+    private int currentWeaponsIndex = 0;
 
 
     private void Update()
@@ -37,23 +29,23 @@ public class ChangingWeapons : MonoBehaviour
 
         // Колёсико мыши
         if (Input.mouseScrollDelta.y != 0)
-            ChangingWeaponsWithTheWheel(Convert.ToInt32(Input.mouseScrollDelta.y));
+            ChangingWeaponsWithTheWheel((int)(Input.mouseScrollDelta.y));
 
 
         // Кнгопки
-        if (Input.GetKeyDown(Revolver))
+        if (Input.GetKeyDown(keyBinding.Revolver))
             GetAWeapon(0);
 
-        if (Input.GetKeyDown(Rifle))
+        if (Input.GetKeyDown(keyBinding.Rifle))
             GetAWeapon(1);
 
-        if (Input.GetKeyDown(SawedShotgun))
+        if (Input.GetKeyDown(keyBinding.SawedShotgun))
             GetAWeapon(2);
 
-        if (Input.GetKeyDown(SniperRifle))
+        if (Input.GetKeyDown(keyBinding.SniperRifle))
             GetAWeapon(3);
 
-        if (Input.GetKeyDown(Submachine))
+        if (Input.GetKeyDown(keyBinding.Submachine))
             GetAWeapon(4);
     }
 
@@ -65,7 +57,7 @@ public class ChangingWeapons : MonoBehaviour
         {
             HideWeapons();
             Weapons[weaponNumber].Gun.SetActive(true);
-            currentWeapons = weaponNumber;
+            currentWeaponsIndex = weaponNumber;
         }
     }
 
@@ -82,22 +74,18 @@ public class ChangingWeapons : MonoBehaviour
     // Смена оружия прокруткой колёсика (тут пролтстываются оружия которых нет)
     private void ChangingWeaponsWithTheWheel(int direction)
     {
-        HideWeapons();
-
-        for (int i = currentWeapons + direction; i < Weapons.Count; i += direction)
+        for (int index = currentWeaponsIndex + direction; index < Weapons.Count; index += direction)
         {
-            if (i < 0) // Если листается назад, за револьвер
+            if (index < 0) // Если листается назад, за револьвер
             {
                 break;
             }
 
-            if (Weapons[i].IsPresent)
+            if (Weapons[index].IsPresent)
             {
-                currentWeapons = i;
+                GetAWeapon(index);
                 break;
             }
         }
-
-        Weapons[currentWeapons].Gun.SetActive(true);
     }
 }

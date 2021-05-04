@@ -12,30 +12,33 @@ public class Revolver : Gun
 
     private void Update()
     {
-        timeShot += Time.deltaTime;
+        if (isActive)
+        {
+            timeShot += Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.Mouse0) && timeShot > timerShot)
-        {
-            Shot();
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0) && numberOfBullets > 0)
+            if (Input.GetKey(keyBinding.Shot) && timeShot > timerShot)
             {
                 Shot();
             }
-        }
+            else
+            {
+                if (Input.GetKeyDown(keyBinding.Shot) && numberOfBullets > 0)
+                {
+                    Shot();
+                }
+            }
 
 
-        if (Input.GetKeyDown(KeyCode.R) && numberOfBullets > 0)
-        {
-            Reloading();
-        }
+            if (Input.GetKeyDown(keyBinding.Reloading) && numberOfBullets > 0)
+            {
+                Reloading();
+            }
 
-        // Курок отжат
-        if (Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            isPulledTrigger = false;
+            // Курок отжат
+            if (Input.GetKeyUp(keyBinding.Shot))
+            {
+                isPulledTrigger = false;
+            }
         }
     }
 }

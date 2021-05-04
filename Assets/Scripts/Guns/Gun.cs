@@ -12,7 +12,7 @@ public class Gun : MonoBehaviour
     [SerializeField] protected AudioSource shotAudio;
     [SerializeField] protected AudioSource reloadingAudio;
     [SerializeField] protected AudioSource noneAMMOAudio;
-
+    [SerializeField] protected KeyBinding keyBinding;
 
     [SerializeField] protected float liveTime = 10;
     [SerializeField] protected float timerShot = 0.3f;
@@ -29,13 +29,15 @@ public class Gun : MonoBehaviour
 
     protected float timeShot;
     protected bool isReloading = false;
-    protected bool isPulledTrigger = false; // Нажат курок
+    protected bool isPulledTrigger = false; // Для однократного звука нажатия курка
+    protected bool isActive = false;
 
 
     protected void Awake()
     {
         uiPanelAMMO = FindObjectOfType<AMMO>();
         timeShot = timerShot; // Приводит таймер в боевую готовность
+        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, -1); // Установка начального положения оружия (в рюкзаке), перед тем как игрок его достанет
     }
 
 
@@ -43,27 +45,32 @@ public class Gun : MonoBehaviour
     {
         UpdatePanelAMMO();
         isReloading = false; // Выключаем бесконечную перезарядку (если сменить оружие во время перезарядки, то оно как-бы бесконечно перезаряжается)
+        timeShot = timerShot; // Приводит таймер в боевую готовность
+        StartCoroutine(ShowGun());
     }
 
 
     protected void Update()
     {
-        timeShot += Time.deltaTime;
-
-        if (Input.GetKey(KeyCode.Mouse0) && timeShot > timerShot)
+        if (isActive)
         {
-            Shot();
-        }
+            timeShot += Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.R) && numberOfBullets > 0)
-        {
-            Reloading();
-        }
+            if (Input.GetKey(keyBinding.Shot) && timeShot > timerShot)
+            {
+                Shot();
+            }
 
-        // Курок отжат
-        if (Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            isPulledTrigger = false;
+            if (Input.GetKeyDown(keyBinding.Reloading) && numberOfBullets > 0)
+            {
+                Reloading();
+            }
+
+            // Курок отжат
+            if (Input.GetKeyUp(keyBinding.Shot))
+            {
+                isPulledTrigger = false;
+            }
         }
     }
 
@@ -142,7 +149,7 @@ public class Gun : MonoBehaviour
     }
 
 
-    private IEnumerator StartReloading()
+    protected IEnumerator StartReloading()
     {
         reloadingAudio.Play();
 
@@ -150,7 +157,7 @@ public class Gun : MonoBehaviour
 
 
         // Логика перезарядки
-        float a = numberOfBullets - (cartridgeMagazine - chargedInTheMagazine); 
+        float a = numberOfBullets - (cartridgeMagazine - chargedInTheMagazine);
         if (a < 0)
         {
             chargedInTheMagazine = cartridgeMagazine + a;
@@ -175,5 +182,32 @@ public class Gun : MonoBehaviour
     public void RefillAmmo(int value)
     {
         numberOfBullets += value;
+    }
+
+
+    protected IEnumerator ShowGun()
+    {
+        isActive = false;
+
+
+        if (chargedInTheMagazine == 0)
+        {
+            Reloading();
+        }
+
+        for (float i = 0; i < 1; i += Time.deltaTime * 5)
+        {
+            yield return new WaitForSeconds(Time.deltaTime);
+            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, Mathf.Lerp(-1, 0, i));
+        }
+
+        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0);
+
+        isActive = true;
+    }
+
+    protected void OnDisable()
+    {
+        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, -1);
     }
 }

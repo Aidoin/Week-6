@@ -63,6 +63,10 @@ public class Unit : MonoBehaviour
         
         vitalSigns.OnTakeDamage.AddListener(TakeDamage);
         vitalSigns.OnDeath.AddListener(Death);
+
+        audioStay.pitch = Random.Range(0.8f, 1.2f);
+        audioTakeDamage.pitch = Random.Range(0.8f, 1.2f);
+        audioDeath.pitch = Random.Range(0.8f, 1.2f);
     }
 
 
@@ -149,22 +153,6 @@ public class Unit : MonoBehaviour
         }
 
         StartCoroutine(Destroy(3));
-
-
-        //for (int i = 0; i < ComponentsToRemoveAtDeath.Length; i++)
-        //{
-        //    if (ComponentsToRemoveAtDeath[i] is SwitchingTheObjectState)
-        //    {
-        //        SwitchingTheObjectState switcer = (SwitchingTheObjectState)ComponentsToRemoveAtDeath[i];
-        //        switcer.switchingOffAtDistance = false;
-        //    }
-        //    else
-        //    {
-        //        Destroy(ComponentsToRemoveAtDeath[i]);
-        //    }
-        //}
-
-        
     }
 
 

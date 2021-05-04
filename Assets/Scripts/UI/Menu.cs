@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class Menu : MonoBehaviour
 {
 
-    [SerializeField] private KeyCode escape;
+    [SerializeField] private KeyBinding keyBinding;
 
     [SerializeField] private GameObject gameInterface;
     [SerializeField] private GameObject menu;
@@ -37,7 +37,7 @@ public class Menu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(escape))
+        if (Input.GetKeyDown(keyBinding.Escape))
         {
             SwitchShowHideMenu();
         }

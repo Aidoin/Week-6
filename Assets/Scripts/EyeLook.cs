@@ -16,7 +16,7 @@ public class EyeLook : MonoBehaviour
 
         float angle = Vector3.SignedAngle(toAim, toAimX, Vector3.forward * Mathf.Sign(toAim.x));
 
-        angle = Mathf.Clamp(angle,-15f,25f);
+        angle = Mathf.Clamp(angle,-40f,40f);
 
         Quaternion targetRotation = Quaternion.Euler(new Vector3(angle, 0f, 0f));
 

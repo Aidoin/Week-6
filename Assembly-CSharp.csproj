@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\PlayerValues.cs" />
+    <Compile Include="Assets\Packages\Hierarchy 2\Runtime\HierarchyLocalData.cs" />
     <Compile Include="Assets\Scripts\Scene1\ActivatingStage_1Zone_2.cs" />
     <Compile Include="Assets\Scripts\Units\Unit.cs" />
     <Compile Include="Assets\Scripts\Guns\SniperRifle.cs" />
@@ -64,11 +65,18 @@
     <Compile Include="Assets\Scripts\Blink.cs" />
     <Compile Include="Assets\FolderAssets\Hit &amp; Slashes Vol.1\Demo Scene\ButtonAnimation.cs" />
     <Compile Include="Assets\Scripts\Guns\Submachine.cs" />
+    <Compile Include="Assets\Packages\Hierarchy 2\Runtime\CustomRowItem.cs" />
+    <Compile Include="Assets\Scripts\DiscardingShot.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
     <Compile Include="Assets\Scripts\Guns\TakeGun.cs" />
+    <Compile Include="Assets\Packages\Hierarchy 2\Runtime\UIElements.cs" />
+    <Compile Include="Assets\Packages\Hierarchy 2\Runtime\VisualElementExstensions.cs" />
+    <Compile Include="Assets\Scripts\KeyBinding.cs" />
+    <Compile Include="Assets\Packages\Hierarchy 2\Runtime\Texture2DExtensions.cs" />
     <Compile Include="Assets\Scripts\UI\DamageScreen.cs" />
     <Compile Include="Assets\Scripts\VitalSigns.cs" />
     <Compile Include="Assets\Scripts\Units\Chicken.cs" />
+    <Compile Include="Assets\Packages\Hierarchy 2\Runtime\HierarchyFolder.cs" />
     <Compile Include="Assets\Scripts\Rocket.cs" />
     <Compile Include="Assets\Scripts\Pointer.cs" />
     <Compile Include="Assets\Scripts\HealsPack.cs" />
@@ -87,10 +95,11 @@
     <Compile Include="Assets\Scripts\CameraMoove.cs" />
     <Compile Include="Assets\Scripts\UI\Menu.cs" />
     <Compile Include="Assets\Scripts\SwitchingTheObjectState.cs" />
+    <Compile Include="Assets\Scripts\AbilitySlowingTime.cs" />
     <Compile Include="Assets\Scripts\FixedObjectPosition.cs" />
     <Compile Include="Assets\Scripts\UI\UiHP.cs" />
     <Compile Include="Assets\Scripts\Guns\ChangingWeapons.cs" />
-    <Compile Include="Assets\Scripts\Ability.cs" />
+    <Compile Include="Assets\Scripts\DoubleJump.cs" />
     <Compile Include="Assets\Scripts\Units\SquirrelSpawnAcorns.cs" />
     <Compile Include="Assets\Scripts\Units\Rabbit.cs" />
     <Compile Include="Assets\Scripts\Units\Bear.cs" />

@@ -71,6 +71,8 @@ AudioMixerController:
     name: Guns
   - guid: dab6350d0b5a3934c85bf03aa667badd
     name: Master
+  - guid: 50f5129243d94cc4d884df51eef53059
+    name: MasterPitch
   - guid: 86275d4aa80aac24cbafc7bac1be2308
     name: Units
   m_AudioMixerGroupViews:
@@ -137,6 +139,7 @@ AudioMixerSnapshotController:
     4eb95157638b1f542a4974cb3e1b0f77: 0
     c29f7af8ab5244845b5997cca144bf83: 0.2
     2d35e2e949d960f41821ac829707cb04: -80
+    86275d4aa80aac24cbafc7bac1be2308: 0
     555a77ba0f6d0dd4cb5426914a82601a: 0
     dab6350d0b5a3934c85bf03aa667badd: 0
     b1109a2da8eee6645996c655878b8d88: 0.216
