@@ -35,20 +35,20 @@ public class TakeGun : MonoBehaviour
                 isUsed = true;
 
                 // Добавляем оружие если его ещё нет
-                if (hub.PlayerValues.ChangingWeapons.Weapons[weaponuNmber].IsPresent == false)
+                if (hub.ChangingWeapons.Weapons[weaponuNmber].IsPresent == false)
                 {
-                    GunsEquipment gunsEquipment = hub.PlayerValues.ChangingWeapons.Weapons[weaponuNmber];
+                    GunsEquipment gunsEquipment = hub.ChangingWeapons.Weapons[weaponuNmber];
                     gunsEquipment.IsPresent = true;
-                    hub.PlayerValues.ChangingWeapons.Weapons[weaponuNmber] = gunsEquipment;
+                    hub.ChangingWeapons.Weapons[weaponuNmber] = gunsEquipment;
 
-                    hub.PlayerValues.ChangingWeapons.GetAWeapon(weaponuNmber);
+                    hub.ChangingWeapons.GetAWeapon(weaponuNmber);
                 }
 
                 // Пополнение боезапаса
-                hub.PlayerValues.ChangingWeapons.Weapons[weaponuNmber].Gun.GetComponent<Gun>().RefillAmmo(numberOfCartridges);
+                hub.ChangingWeapons.Weapons[weaponuNmber].Gun.GetComponent<Gun>().RefillAmmo(numberOfCartridges);
                 
                 // Обновление боезапаса текущего оружия
-                hub.PlayerValues.ChangingWeapons.Weapons[hub.PlayerValues.ChangingWeapons.CurrentWeapons].Gun.GetComponent<Gun>().UpdatePanelAMMO();
+                hub.ChangingWeapons.Weapons[hub.ChangingWeapons.CurrentWeapons].Gun.GetComponent<Gun>().UpdatePanelAMMO();
 
                 StartCoroutine(OnTake());
             }

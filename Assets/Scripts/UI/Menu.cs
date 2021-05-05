@@ -9,6 +9,8 @@ using UnityEngine.UI;
 public class Menu : MonoBehaviour
 {
 
+    public MonoBehaviour[] ComponentsToDisable;
+
     [SerializeField] private KeyBinding keyBinding;
 
     [SerializeField] private GameObject gameInterface;
@@ -53,18 +55,22 @@ public class Menu : MonoBehaviour
             gameInterface.SetActive(false);
             menu.SetActive(true);
             Time.timeScale = 0;
-            hub.PlayerValues.ChangingWeapons.enabled = false;
-            hub.PlayerValues.PlayerController.enabled = false;
-            hub.PlayerValues.Pointer.enabled = false;
+
+            foreach (var item in ComponentsToDisable)
+            {
+                item.enabled = false;
+            }
         }
         else
         {
             gameInterface.SetActive(true);
             menu.SetActive(false);
             Time.timeScale = 1;
-            hub.PlayerValues.ChangingWeapons.enabled = true;
-            hub.PlayerValues.PlayerController.enabled = true;
-            hub.PlayerValues.Pointer.enabled = true;
+
+            foreach (var item in ComponentsToDisable)
+            {
+                item.enabled = true;
+            }
         }
     }
 

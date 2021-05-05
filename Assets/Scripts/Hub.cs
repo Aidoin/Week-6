@@ -5,13 +5,14 @@ using UnityEngine;
 public class Hub : MonoBehaviour
 {
     public GameObject Player;
-    public PlayerValues PlayerValues;
     public Console Console;
     public KeyBinding KeyBinding;
+    public ChangingWeapons ChangingWeapons;
 }
 
-public enum Direction
-{
-    Right,
-    Left
-}
+
+//public enum Direction
+//{
+//    Right,
+//    Left
+//}

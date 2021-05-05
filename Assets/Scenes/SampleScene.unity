@@ -10250,6 +10250,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chiken (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -164.22702
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 7.9486494
+      objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680535, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
       propertyPath: m_RootOrder
@@ -15192,6 +15202,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chiken (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -72.115715
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.68005705
+      objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680535, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
       propertyPath: m_RootOrder
@@ -15260,6 +15280,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chiken (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -105.64732
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.531384
       objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680535, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
@@ -20601,6 +20631,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e56b32c31252dec449cf6c60209b1620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ComponentsToDisable:
+  - {fileID: 490439530}
+  - {fileID: 572791711}
+  - {fileID: 185273228}
+  - {fileID: 932224564}
   keyBinding: {fileID: 1765748250}
   gameInterface: {fileID: 1693112025}
   menu: {fileID: 1620380892}
@@ -21122,7 +21157,6 @@ GameObject:
   - component: {fileID: 185273228}
   - component: {fileID: 185273231}
   - component: {fileID: 185273230}
-  - component: {fileID: 185273232}
   - component: {fileID: 185273233}
   m_Layer: 0
   m_Name: Player
@@ -21327,21 +21361,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &185273232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 185273226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f98d5e361af1a054eb22b0ff86e97311, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerController: {fileID: 185273228}
-  ChangingWeapons: {fileID: 572791711}
-  Pointer: {fileID: 490439530}
 --- !u!145 &185273233
 SpringJoint:
   m_ObjectHideFlags: 0
@@ -27134,6 +27153,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chiken (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -50.569107
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 4.7037764
+      objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680535, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
       propertyPath: m_RootOrder
@@ -32016,6 +32045,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chiken (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -86.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -6.5453305
+      objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680535, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
       propertyPath: m_RootOrder
@@ -32261,6 +32300,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chiken (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -185.29726
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 9.679279
       objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680535, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
@@ -54069,13 +54118,13 @@ MonoBehaviour:
   - Gun: {fileID: 530275193}
     IsPresent: 1
   - Gun: {fileID: 1693861053}
-    IsPresent: 1
+    IsPresent: 0
   - Gun: {fileID: 1125166815}
-    IsPresent: 1
+    IsPresent: 0
   - Gun: {fileID: 1101975819}
-    IsPresent: 1
+    IsPresent: 0
   - Gun: {fileID: 736077764}
-    IsPresent: 1
+    IsPresent: 0
   keyBinding: {fileID: 1765748250}
 --- !u!1001 &586531608
 PrefabInstance:
@@ -54088,6 +54137,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chiken (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -126.934555
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 6.95
       objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680535, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
@@ -65661,6 +65720,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chiken (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -125.85291
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 4.3143644
+      objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680535, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
       propertyPath: m_RootOrder
@@ -66187,6 +66256,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chiken (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -147.22552
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 6.6074486
       objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680535, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
@@ -68037,6 +68116,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chiken (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -17.427206
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 5.0931673
+      objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680535, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
       propertyPath: m_RootOrder
@@ -69830,6 +69919,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chiken
       objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -15.912903
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 2.28089
+      objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680535, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
       propertyPath: m_RootOrder
@@ -69967,6 +70066,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chiken (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -104.176285
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -2.954269
       objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680535, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
@@ -70380,6 +70489,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chiken (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -190.66222
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 9.679279
       objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680535, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
@@ -81355,6 +81474,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chiken (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -123.47329
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 4.3143644
+      objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680535, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
       propertyPath: m_RootOrder
@@ -91236,6 +91365,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chiken (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -30.579996
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 3.0164087
+      objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680535, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
       propertyPath: m_RootOrder
@@ -92483,6 +92622,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chiken (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -30.579996
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 1.2857766
       objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680535, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
@@ -97472,6 +97621,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chiken (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -124.46841
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 6.867047
+      objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680535, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
       propertyPath: m_RootOrder
@@ -97805,9 +97964,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 185273226}
-  PlayerValues: {fileID: 185273232}
   Console: {fileID: 1843498210}
   KeyBinding: {fileID: 1765748250}
+  ChangingWeapons: {fileID: 572791711}
 --- !u!4 &1438370182
 Transform:
   m_ObjectHideFlags: 0
@@ -98116,6 +98275,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chiken (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -18.81171
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 2.2376244
       objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680535, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
@@ -109194,6 +109363,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chiken (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -187.97974
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 7.991913
+      objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680535, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
       propertyPath: m_RootOrder
@@ -109262,6 +109441,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chiken (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -128.10274
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 4.3143644
       objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680535, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
@@ -115934,12 +116123,12 @@ PrefabInstance:
     - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -52.90546
+      value: -52.69
       objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 7.1266613
+      value: 2.37
       objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680535, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
@@ -118365,6 +118554,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chiken (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -107.33469
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -2.954269
       objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680535, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
@@ -123345,6 +123544,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chiken (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -50.43931
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 2.4539547
+      objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680535, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
       propertyPath: m_RootOrder
@@ -123539,6 +123748,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chiken (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -144.88918
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018622459431680533, guid: 04636287717f8094c93e27d64a64f01a,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 6.6507144
       objectReference: {fileID: 0}
     - target: {fileID: 3018622459431680535, guid: 04636287717f8094c93e27d64a64f01a,
         type: 3}
