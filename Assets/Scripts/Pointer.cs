@@ -13,7 +13,7 @@ public class Pointer : MonoBehaviour
     void LateUpdate()
     {
         Ray ray = PlayerCamera.ScreenPointToRay(Input.mousePosition);
-        Plane plane = new Plane(-Vector3.forward, Vector3.zero);
+        Plane plane = new Plane(Vector3.back, Vector3.zero);
 
         float distance;
         plane.Raycast(ray, out distance);

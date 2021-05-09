@@ -2,23 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum SittingStandingPosition
+{
+    Stand,
+    Squat
+}
+
+
 [RequireComponent(typeof(VitalSigns))]
 [RequireComponent(typeof(Rigidbody))]
 
+
 public class PlayerController : MonoBehaviour
 {
+    [HideInInspector] public bool isSpinning = false; // Крутиться в воздухе?
+
     [SerializeField] private Transform Body;
     [SerializeField] private Transform Eyes;
     [SerializeField] private Transform Aim;
     [SerializeField] private KeyBinding keyBinding;
     [SerializeField] private AudioSource AudioDeath;
 
-    private Rigidbody rigidbody;
-    private VitalSigns vitalSigns;
+    private new Rigidbody rigidbody;
 
     private Vector3 groundNormal; // Вектор движения персонажа относительно его положения
-    private Vector3 left = (Vector3.right + Vector3.forward).normalized; // Вектор направления игрока влево
-    private Vector3 right = (Vector3.left + Vector3.forward).normalized; // Вектор направления игрока вправо
+    private SittingStandingPosition sittingStanding; // Сидит или стоит?
 
     private float jumpPowert = 15; // Сила прыжка
     private float speedMoove = 2; // Скорость движения
@@ -29,6 +38,7 @@ public class PlayerController : MonoBehaviour
 
     private float timeJump = 0.5f; // Время между прыжками
     private float timerJump = 0; // Таймер времени между прыжками
+    private float opportunityTimerDisableRotation; // Через какое время после прыжка возможно отменить вращение (чтобы при прыжке сразу не отключалось вращение в онколлижен)
 
     public bool IsGraundet => isGraundet;
     private bool isGraundet; // Персонаж на земле?
@@ -38,7 +48,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
-        vitalSigns = GetComponent<VitalSigns>();
+        sittingStanding = SittingStandingPosition.Stand;
     }
 
 
@@ -46,40 +56,22 @@ public class PlayerController : MonoBehaviour
     {
         timerJump += Time.deltaTime;
 
-        if (Input.GetKey(keyBinding.Jump))
-            if (isGraundet)
-                isJumped = true;
-
         if (Input.GetKeyUp(keyBinding.Jump))
-            isJumped = false;
-        
-
-        if(Input.GetKey(keyBinding.Squat))
         {
-            Body.localScale = Vector3.Lerp(Body.localScale, new Vector3(Body.localScale.x, 0.65f, Body.localScale.z), 0.1f);
+            isJumped = false;
+        }
+
+        if (Input.GetKey(keyBinding.Squat))
+        {
+            sittingStanding = SittingStandingPosition.Squat;
         }
         else
         {
-            Body.localScale = Vector3.Lerp(Body.localScale, Vector3.one, 0.1f);
+            sittingStanding = SittingStandingPosition.Stand;
         }
-
-        // Проверка нормали земли
-        Debug.DrawRay(transform.position, groundNormal * 20, Color.yellow);
-        Debug.DrawRay(transform.position, -groundNormal * 20, Color.yellow);
-
-        // Проверка направлений поворота
-        Debug.DrawRay(transform.position, left * 20, Color.blue);
-        Debug.DrawRay(transform.position, right * 20, Color.red);
 
         // Поворот в сторону оружия
-        if (Input.mousePosition.x < Screen.width / 2)
-        {
-            Body.LookAt(Body.position + Vector3.MoveTowards(Body.forward, left, Time.deltaTime * 20f)); // Поворот тела
-        }
-        else
-        {
-            Body.LookAt(Body.position + Vector3.MoveTowards(Body.forward, right, Time.deltaTime * 20f)); // Поворот тела
-        }
+        TurnToTheSideOfTheWeapon();
     }
 
 
@@ -97,18 +89,26 @@ public class PlayerController : MonoBehaviour
         if (!Input.GetKey(keyBinding.MoveLeft) && !Input.GetKey(keyBinding.MoveRight))
             MooveHorizontal = 0;
 
+        if (Input.GetKey(keyBinding.Jump))
+        {
+            if (isGraundet)
+            {
+                isJumped = true;
+            }
+
+            // Крутиться в прыжке
+            Spinning();
+        }
 
         if (isGraundet)
         {
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.identity, Time.deltaTime * 15);
+
             if (isJumped)
             {
-                if (timerJump > timeJump)
-                {
-                    timerJump = 0;
-                    isJumped = false;
-                    rigidbody.AddForce(0, jumpPowert - rigidbody.velocity.y, 0, ForceMode.VelocityChange);
-                }
-            }else
+                Jump();
+            }
+            else
             {
                 // Управление на земле
                 rigidbody.AddForce(groundNormal * MooveHorizontal * speedMoove, ForceMode.VelocityChange); // Движение
@@ -117,14 +117,86 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            rigidbody.freezeRotation = false;
+
             // Управление в воздухе
             rigidbody.AddForce(groundNormal * MooveHorizontal * (speedMoove / 4), ForceMode.VelocityChange); // Движение
             rigidbody.velocity -= new Vector3(rigidbody.velocity.x * airResistance, 0.5f, 0); // Замедление
+
+            sittingStanding = SittingStandingPosition.Squat;
         }
 
-        
-        groundNormal = Vector3.left;
+        // Обновление положения Сидя/Стоя
+        UpdatingPositionSittingStanding();
+
+        // Обнуд=ление переменных
+        groundNormal = Vector3.right;
         isGraundet = false;
+
+        // Таймер
+        opportunityTimerDisableRotation += Time.fixedDeltaTime;
+    }
+
+
+    private void Jump()
+    {
+        if (timerJump > timeJump)
+        {
+            timerJump = 0;
+            opportunityTimerDisableRotation = 0;
+            isJumped = false;
+            rigidbody.freezeRotation = false;
+            rigidbody.velocity = new Vector3(rigidbody.velocity.x, jumpPowert, rigidbody.velocity.z);
+            isSpinning = true;
+        }
+    }
+
+
+    private void UpdatingPositionSittingStanding()
+    {
+        if (sittingStanding == SittingStandingPosition.Stand)
+        {
+            Body.localScale = Vector3.Lerp(Body.localScale, Vector3.one, 0.2f); // Подняться
+
+        }
+        else
+        {
+            Body.localScale = Vector3.Lerp(Body.localScale, new Vector3(Body.localScale.x, 0.5f, Body.localScale.z), 0.2f); // Присесть
+        }
+    }
+
+
+    private void TurnToTheSideOfTheWeapon()
+    {
+        Quaternion targetRotation;
+
+        if (Input.mousePosition.x < Screen.width / 2)
+        {
+            targetRotation = Quaternion.Euler(new Vector3(0f, 45, 0f));
+        }
+        else
+        {
+            targetRotation = Quaternion.Euler(new Vector3(0f, -45, 0f));
+        }
+
+        Body.localRotation = Quaternion.Lerp(Body.localRotation, targetRotation, Time.deltaTime * 20f);
+    }
+
+
+    private void Spinning()
+    {
+        if (isSpinning)
+        {
+            // Поворот в воздухе
+            if (rigidbody.velocity.x > 0)
+            {
+                rigidbody.AddRelativeTorque(0f, 0f, -10f, ForceMode.VelocityChange);
+            }
+            else
+            {
+                rigidbody.AddRelativeTorque(0f, 0f, 10f, ForceMode.VelocityChange);
+            }
+        }
     }
 
 
@@ -132,9 +204,25 @@ public class PlayerController : MonoBehaviour
     {
         if (Vector3.Angle(Vector3.up, collision.contacts[0].normal) < 45)
         {
-            groundNormal = Vector3.Cross(collision.contacts[0].normal, Vector3.back);
+            groundNormal = Vector3.Cross(collision.contacts[0].normal, Vector3.forward);
 
             isGraundet = true;
+
+            if (opportunityTimerDisableRotation > 0.2)
+            {
+                isSpinning = false;
+                rigidbody.freezeRotation = true;
+            }
         }
     }
+
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        // Проверка нормали земли
+        Debug.DrawRay(transform.position, groundNormal * 20, Color.yellow);
+        Debug.DrawRay(transform.position, -groundNormal * 20, Color.yellow);
+    }
+#endif
 }

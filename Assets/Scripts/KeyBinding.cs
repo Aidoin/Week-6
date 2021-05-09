@@ -17,5 +17,6 @@ public class KeyBinding : MonoBehaviour
     public KeyCode Submachine;
     public KeyCode Ability_1;
     public KeyCode Ability_2;
+    public KeyCode GrapplingHook;
     public KeyCode Escape;
 }

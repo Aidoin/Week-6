@@ -9,6 +9,7 @@ public class CameraMoove : MonoBehaviour
 
     [SerializeField] private Vector3 offset = Vector3.zero;
 
+    [SerializeField] private float angleRotation;
     [SerializeField] private float minDistance = 10;
     [SerializeField] private float maxDistance = 20;
 
@@ -29,13 +30,13 @@ public class CameraMoove : MonoBehaviour
     private void Update()
     {
         cameraOffsetPosition = playerTransform.position + offset;
-        cameraOffsetPosition.z += distance;
+        cameraOffsetPosition.z -= distance;
 
         transform.position = Vector3.Lerp(transform.position, cameraOffsetPosition, Time.deltaTime * 10);
 
         float mouseX = 0.5f + (Input.mousePosition.x - (Screen.width / 2)) / Screen.width *2;
 
-        float angle = Mathf.Lerp(175, 185, mouseX);
+        float angle = Mathf.Lerp(-angleRotation, angleRotation, mouseX);
 
         transform.localEulerAngles = new Vector3(0f, angle, 0f);
     }

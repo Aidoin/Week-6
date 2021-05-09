@@ -12,7 +12,7 @@ public class Rocket : MonoBehaviour
 
     [SerializeField] private Transform model;
 
-    private Rigidbody rigidbody;
+    private new Rigidbody rigidbody;
     private Hub hub;
 
     private Vector3 toPlayer;

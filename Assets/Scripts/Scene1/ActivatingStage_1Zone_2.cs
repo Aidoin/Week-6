@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class ActivatingStage_1Zone_2 : MonoBehaviour
 {
+
     [SerializeField] private Menu menu;
-    [SerializeField] private AudioSource audio;
+    [SerializeField] private new AudioSource audio;
     [SerializeField] private AudioClip clip1;
     [SerializeField] private AudioClip clip2;
     [SerializeField] private Light lightWorld;

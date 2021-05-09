@@ -9,6 +9,7 @@ using UnityEditor;
 [RequireComponent(typeof(VitalSigns))]
 [RequireComponent(typeof(SwitchingTheObjectState))]
 
+
 public class Unit : MonoBehaviour
 {
     
@@ -26,7 +27,7 @@ public class Unit : MonoBehaviour
 
     [SerializeField] protected Collider[] colliders;
 
-    protected Rigidbody rigidbody;
+    protected new Rigidbody rigidbody;
     protected VitalSigns vitalSigns;
     protected Transform playerTransform;
 

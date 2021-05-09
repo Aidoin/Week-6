@@ -18,7 +18,7 @@ public class EyeLook : MonoBehaviour
 
         angle = Mathf.Clamp(angle,-40f,40f);
 
-        Quaternion targetRotation = Quaternion.Euler(new Vector3(angle, 0f, 0f));
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(angle, -180f, 0f));
 
         transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, 1f);
     }

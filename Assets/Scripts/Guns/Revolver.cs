@@ -10,7 +10,7 @@ public class Revolver : Gun
         base.Awake();
     }
 
-    private void Update()
+    private new void Update()
     {
         if (isActive)
         {

@@ -25,6 +25,8 @@ public class AbilitySlowingTime : MonoBehaviour
     private float timeCooldown;
 
     private bool isUsed = false;
+    private bool isActive = false;
+
 
     private void Start()
     {
@@ -49,8 +51,20 @@ public class AbilitySlowingTime : MonoBehaviour
             loadingImg.fillAmount = 0;
         }
 
-        // Использование способгности
+        // Переключение активности
         if (Input.GetKeyDown(keyBinding.Ability_1))
+        {
+            isActive = !isActive;
+
+            if(isActive == false)
+            {
+                DisableAbility();
+
+            }
+        }
+
+        // Использование способгности
+        if(isActive)
         {
             if (timeCooldown < timerCooldownAbility)
             {
@@ -63,12 +77,6 @@ public class AbilitySlowingTime : MonoBehaviour
                 EnableAbility();
             }
         }
-
-        if (Input.GetKeyUp(keyBinding.Ability_1))
-        {
-            DisableAbility();
-        }
-
 
         Ability();
     }
@@ -116,6 +124,7 @@ public class AbilitySlowingTime : MonoBehaviour
     {
         audioUse.Pause();
         isUsed = false;
+        isActive = false;
         Time.timeScale = 1;
         cameraMoove.DistanceMin();
         chargeBar.gameObject.SetActive(false);
