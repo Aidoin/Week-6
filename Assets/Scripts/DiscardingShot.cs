@@ -16,10 +16,11 @@ public class DiscardingShot : MonoBehaviour
     [SerializeField] private AudioSource audioUse;
     [SerializeField] private GameObject effectAbility;
 
-
     [SerializeField] private float timerCooldownAbility;
 
     private float timeCooldown;
+    private float timePlayerInAir;
+    private bool landingRollback = false;
 
 
     private void Start()
@@ -30,10 +31,16 @@ public class DiscardingShot : MonoBehaviour
 
     private void Update()
     {
-        if (timeCooldown < timerCooldownAbility)
+        timePlayerInAir += Time.deltaTime; // Время в воздухе увеличивается (Обнуляется если игрок не стоит на земле)
+
+        if(timePlayerInAir > 1f) // Если игрок в воздухе больше 1 секунды
+        {
+            landingRollback = true;
+        }
+
+        if (timeCooldown < timerCooldownAbility) // Если время с последнего использования абилки меньше чем время перезарядки
         {
             timeCooldown += Time.deltaTime;
-
             loading.fillAmount = 1 - (timeCooldown / timerCooldownAbility);
         }
         else
@@ -41,7 +48,6 @@ public class DiscardingShot : MonoBehaviour
             loading.fillAmount = 0;
         }            
         
-
         if (Input.GetKeyDown(keyBinding.Ability_2))
         {
             if (timeCooldown < timerCooldownAbility)
@@ -56,5 +62,22 @@ public class DiscardingShot : MonoBehaviour
             audioCooldown.Stop();
             audioUse.Play();
         }
+    }
+
+
+    // Когда игрок стоит на земле
+    public void PlayerIsGraundet()
+    {
+        timePlayerInAir = 0;
+
+        if(landingRollback)
+            ReadyToUse();
+    }
+
+    // Обнуляет перезарядку
+    public void ReadyToUse()
+    {
+        timeCooldown = timerCooldownAbility;
+        landingRollback = false;
     }
 }

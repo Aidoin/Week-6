@@ -8,6 +8,7 @@ public class Hub : MonoBehaviour
     public Console Console;
     public KeyBinding KeyBinding;
     public ChangingWeapons ChangingWeapons;
+    public LocationController LocationController;
 }
 
 

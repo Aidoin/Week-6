@@ -18,12 +18,12 @@ public class VitalSigns : MonoBehaviour
     [SerializeField] private float invulnerabilityTime = 2;
     [SerializeField] private bool invulnerabilityWhenTakingDamage = false;
 
-    [HideInInspector] public UnityEvent OnTakeDamage;
+    public UnityEvent OnTakeDamage;
+    public UnityEvent OnDeath;
     [HideInInspector] public UnityEvent OnHealthRestore;
     [HideInInspector] public UnityEvent OnArmorRestore;
     [HideInInspector] public UnityEvent OnArmorEnabled;
     [HideInInspector] public UnityEvent OnIsinvulnerability;
-    [HideInInspector] public UnityEvent OnDeath;
 
     private Hub hub;
     private bool armorEnabled = true;
@@ -44,13 +44,22 @@ public class VitalSigns : MonoBehaviour
 
     public void Death()
     {
+        health = 0;
         hub.Console.ShowMassage(name + " убит");
         OnDeath.Invoke();
     }
 
 
-    private IEnumerator InInvulnerability()
+    public void SetInInvulnerability(float invulnerabilityTime)
     {
+        StartCoroutine(InInvulnerability(invulnerabilityTime));
+    }
+
+
+    private IEnumerator InInvulnerability(float invulnerabilityTime)
+    {
+        IsInvulnerability = true;
+
         for (float time = 0; time < invulnerabilityTime; time += Time.deltaTime)
         {
             OnIsinvulnerability.Invoke();
@@ -92,12 +101,11 @@ public class VitalSigns : MonoBehaviour
             health = 0;
             Death();
         }
-
-        if (invulnerabilityWhenTakingDamage)
+        else if(invulnerabilityWhenTakingDamage)
         {
-            IsInvulnerability = true;
-            StartCoroutine(InInvulnerability());
+            StartCoroutine(InInvulnerability(invulnerabilityTime));
         }
+
         OnTakeDamage.Invoke();
         return true;
     }

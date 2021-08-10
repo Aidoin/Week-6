@@ -34,6 +34,8 @@ public class Menu : MonoBehaviour
         audioMixer.GetFloat("Master", out volume);
         sliderVolumeMusic.value = volume;
         menu.SetActive(false);
+
+        Cursor.visible = false;
     }
 
 
@@ -52,6 +54,7 @@ public class Menu : MonoBehaviour
 
         if (isShowed)
         {
+            Cursor.visible = true;
             gameInterface.SetActive(false);
             menu.SetActive(true);
             Time.timeScale = 0;
@@ -63,6 +66,7 @@ public class Menu : MonoBehaviour
         }
         else
         {
+            Cursor.visible = false;
             gameInterface.SetActive(true);
             menu.SetActive(false);
             Time.timeScale = 1;

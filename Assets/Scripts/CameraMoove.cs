@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraMoove : MonoBehaviour
 {
+    public float CameraMovementSpeed = 10;
 
     [SerializeField] private Transform playerTransform;
 
@@ -32,7 +33,7 @@ public class CameraMoove : MonoBehaviour
         cameraOffsetPosition = playerTransform.position + offset;
         cameraOffsetPosition.z -= distance;
 
-        transform.position = Vector3.Lerp(transform.position, cameraOffsetPosition, Time.deltaTime * 10);
+        transform.position = Vector3.Lerp(transform.position, cameraOffsetPosition, Time.deltaTime * CameraMovementSpeed);
 
         float mouseX = 0.5f + (Input.mousePosition.x - (Screen.width / 2)) / Screen.width *2;
 

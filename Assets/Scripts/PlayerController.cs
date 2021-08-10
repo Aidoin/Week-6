@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 
 public enum SittingStandingPosition
 {
@@ -16,6 +16,8 @@ public enum SittingStandingPosition
 
 public class PlayerController : MonoBehaviour
 {
+    public UnityEvent Graundet;
+
     [HideInInspector] public bool isSpinning = false; // Крутиться в воздухе?
 
     [SerializeField] private Transform Body;
@@ -48,10 +50,11 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+
         sittingStanding = SittingStandingPosition.Stand;
     }
 
-
+    
     void Update()
     {
         timerJump += Time.deltaTime;
@@ -202,11 +205,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (Vector3.Angle(Vector3.up, collision.contacts[0].normal) < 45)
+        if (Vector3.Angle(Vector3.up, collision.contacts[0].normal) < 50)
         {
             groundNormal = Vector3.Cross(collision.contacts[0].normal, Vector3.forward);
 
             isGraundet = true;
+            Graundet.Invoke();
 
             if (opportunityTimerDisableRotation > 0.2)
             {
